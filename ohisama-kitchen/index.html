@@ -1,0 +1,822 @@
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>撮影準備シート｜おひとり様キッチン</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:    #FFFFFF;
+      --off:   #F7F5F2;
+      --div:   #E4E0DA;
+      --text:  #1A1714;
+      --text2: #706860;
+      --text3: #A89E95;
+      --ink:   #0E0D0A;
+      --tc:    #7A3A14;
+      --tc-bg: #F5EDE5;
+      --ai-bg: #F0EDE8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: 'Noto Sans JP', -apple-system, 'Hiragino Sans', sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    #app { max-width: 620px; margin: 0 auto; min-height: 100vh; }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: #fff; border-bottom: 1px solid var(--div);
+      padding: 0 20px; height: 48px;
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center;
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .logo-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 13px; font-weight: 800; letter-spacing: .1em; color: var(--text);
+    }
+    .logo-sub { font-size: 8px; color: var(--text3); letter-spacing: .16em; margin-top: 1px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 12px; color: var(--text2); cursor: pointer; font-weight: 300;
+    }
+    .back-btn svg { width: 15px; height: 15px; }
+
+    /* ═══════════ LIST VIEW ═══════════ */
+    .list-top { padding: 32px 20px 20px; border-bottom: 1px solid var(--div); }
+    .list-top-label { font-size: 9px; letter-spacing: .2em; color: var(--text3); margin-bottom: 8px; }
+    .list-top h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 26px; font-weight: 800; color: var(--text);
+    }
+    .list-top p { font-size: 12px; color: var(--text3); margin-top: 5px; }
+
+    .recipe-list { display: flex; flex-direction: column; }
+
+    .recipe-card {
+      cursor: pointer; border-bottom: 1px solid var(--div);
+      background: #fff; display: flex; flex-direction: column;
+    }
+    .recipe-card:active { background: var(--off); }
+
+    .card-img-area {
+      aspect-ratio: 3/2; background: var(--off);
+      overflow: hidden; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-img-area img { width: 100%; height: 100%; object-fit: cover; }
+    .card-img-emoji { font-size: 72px; opacity: .35; }
+    .card-num {
+      position: absolute; left: 16px; bottom: 12px;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 48px; font-weight: 800; color: #fff;
+      line-height: 1; text-shadow: 0 1px 8px rgba(0,0,0,.35);
+    }
+
+    .card-info { padding: 18px 20px 22px; }
+    .card-recipe-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 20px; font-weight: 700; line-height: 1.35; color: var(--text);
+    }
+    .card-recipe-sub { font-size: 12px; color: var(--text2); margin-top: 5px; font-weight: 300; }
+    .card-meta { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+    .card-recipe-by { font-size: 10px; color: var(--text3); }
+    .card-tc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .card-tc-tag {
+      font-size: 9px; color: var(--tc);
+      border: 1px solid var(--tc); padding: 1px 7px;
+    }
+
+    /* ═══════════ DETAIL VIEW ═══════════ */
+    .detail-hero-img {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--off);
+      overflow: hidden; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .detail-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+    .detail-hero-emoji { font-size: 110px; opacity: .1; }
+    .detail-hero-num {
+      position: absolute; left: 18px; bottom: 14px;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 72px; font-weight: 800; color: #fff;
+      line-height: 1; text-shadow: 0 2px 12px rgba(0,0,0,.4);
+    }
+    .detail-hero-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    }
+    .detail-hero-placeholder-label { font-size: 9px; color: var(--text3); letter-spacing: .14em; }
+    .img-loading {
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,.88);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    }
+    .spinner {
+      width: 28px; height: 28px;
+      border: 2px solid var(--div); border-top-color: var(--ink);
+      border-radius: 50%; animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .img-loading-text { font-size: 10px; color: var(--text2); letter-spacing: .1em; }
+    .img-loading-roles { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .img-loading-roles span { font-size: 10px; color: var(--text3); animation: fadeIn 0.4s ease both; }
+    .img-loading-roles span:nth-child(1) { animation-delay: 0s; }
+    .img-loading-roles span:nth-child(2) { animation-delay: 0.35s; }
+    .img-loading-roles span:nth-child(3) { animation-delay: 0.7s; }
+    .img-loading-roles span:nth-child(4) { animation-delay: 1.05s; }
+    .img-loading-roles span:nth-child(5) { animation-delay: 1.4s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    .img-error {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+    }
+    .img-error-text { font-size: 11px; color: var(--text2); text-align: center; line-height: 1.8; }
+
+    /* image actions bar */
+    .img-action-bar {
+      padding: 12px 20px; display: flex; gap: 7px;
+      border-bottom: 1px solid var(--div);
+    }
+    .btn-gen {
+      flex: 1; padding: 10px 0;
+      background: var(--ink); color: #fff; border: none;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; font-weight: 700; cursor: pointer; letter-spacing: .08em;
+    }
+    .btn-gen:disabled { opacity: .4; }
+    .btn-upload {
+      padding: 10px 13px; background: #fff; color: var(--text);
+      border: 1px solid var(--div); font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; font-weight: 300; cursor: pointer; white-space: nowrap;
+    }
+    .btn-copy-p {
+      padding: 10px 12px; background: #fff; color: var(--text2);
+      border: 1px solid var(--div); font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; cursor: pointer;
+    }
+    .btn-export {
+      font-size: 10px; color: var(--text2); background: none;
+      border: 1px solid var(--div); padding: 5px 10px;
+      cursor: pointer; font-family: 'Noto Sans JP', sans-serif;
+      white-space: nowrap; letter-spacing: .04em;
+    }
+    .btn-export:disabled { opacity: .45; }
+    .prompt-area { padding: 9px 20px; border-bottom: 1px solid var(--div); }
+    .prompt-toggle {
+      font-size: 9px; color: var(--text3); background: none; border: none;
+      cursor: pointer; letter-spacing: .1em; text-decoration: underline;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .prompt-text { font-size: 9.5px; color: var(--text3); line-height: 1.9; margin-top: 7px; display: none; }
+    .nano-link {
+      display: block; padding: 9px 20px;
+      font-size: 9px; color: var(--text3); text-decoration: none;
+      letter-spacing: .1em; border-bottom: 1px solid var(--div);
+    }
+
+    /* ── Detail title block ── */
+    .detail-title-block {
+      padding: 26px 20px 22px; text-align: center;
+      border-bottom: 1px solid var(--div);
+    }
+    .detail-row-label { font-size: 9px; letter-spacing: .2em; color: var(--text3); margin-bottom: 12px; }
+    .detail-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 26px; font-weight: 800; line-height: 1.3; color: var(--text);
+    }
+    .detail-sub { font-size: 12.5px; color: var(--text2); margin-top: 8px; font-weight: 300; }
+    .detail-by { font-size: 10px; color: var(--text3); margin-top: 12px; letter-spacing: .08em; }
+
+    /* ── Recipe two-column layout (材料 | 作り方) ── */
+    .recipe-layout {
+      display: grid; grid-template-columns: 2fr 3fr;
+      border-bottom: 1px solid var(--div);
+    }
+    .recipe-col { padding: 20px 16px 24px; }
+    .recipe-col + .recipe-col { border-left: 1px solid var(--div); }
+    .recipe-col-head {
+      font-size: 9.5px; letter-spacing: .16em; color: var(--text2);
+      border-bottom: 1px solid var(--div); padding-bottom: 8px; margin-bottom: 12px;
+    }
+    .recipe-col-head span { font-size: 8.5px; color: var(--text3); font-weight: 300; letter-spacing: .04em; }
+
+    /* Ingredient list with dot leader */
+    .ing-list { list-style: none; }
+    .ing-item { display: flex; align-items: baseline; padding: 4px 0; gap: 0; }
+    .ing-badge { font-size: 8px; font-weight: 700; padding: 1px 5px; white-space: nowrap; flex-shrink: 0; margin-right: 4px; letter-spacing: .04em; }
+    .b-tc { background: var(--tc-bg); color: var(--tc); }
+    .b-ai { background: var(--ai-bg); color: var(--text2); }
+    .ing-name { font-size: 11.5px; white-space: nowrap; overflow: hidden; flex-shrink: 0; max-width: 55%; }
+    .ing-dots { flex: 1; border-bottom: 1px dotted var(--text3); position: relative; bottom: 2px; min-width: 4px; margin: 0 3px; }
+    .ing-qty { font-size: 10.5px; color: var(--text2); white-space: nowrap; flex-shrink: 0; }
+
+    /* Steps (作り方) */
+    .step { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--div); }
+    .step:last-child { border-bottom: none; }
+    .step-n {
+      flex-shrink: 0; width: 20px; height: 20px;
+      border: 1px solid var(--ink); color: var(--ink);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 9.5px; font-weight: 700; margin-top: 1px;
+    }
+    .step-t { font-size: 12px; line-height: 1.75; font-weight: 300; }
+
+    /* ── Role Banner ── */
+    .role-banner {
+      display: flex; overflow-x: auto; gap: 1px; background: var(--div);
+      border-top: 1px solid var(--div); border-bottom: 1px solid var(--div);
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .role-banner::-webkit-scrollbar { display: none; }
+    .role-banner-card {
+      flex-shrink: 0; background: #fff;
+      padding: 13px 11px 11px;
+      display: flex; flex-direction: column; align-items: center; gap: 5px;
+      cursor: pointer; transition: background .12s; min-width: 76px;
+    }
+    .role-banner-card.active { background: var(--tc-bg); }
+    .role-banner-card.active .role-banner-name { color: var(--tc); }
+    .role-banner-icon { font-size: 20px; line-height: 1; }
+    .role-banner-name { font-size: 8.5px; font-weight: 700; color: var(--text); text-align: center; line-height: 1.35; letter-spacing: .04em; transition: color .12s; }
+    .role-banner-desc { font-size: 7px; color: var(--text3); text-align: center; line-height: 1.5; }
+
+    /* ── Role Comment Box ── */
+    .role-comment { display: none; border-bottom: 1px solid var(--div); animation: slideDown .16s ease; }
+    .role-comment.open { display: block; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+    .role-comment-head {
+      padding: 11px 20px 10px; border-bottom: 1px solid var(--div);
+      display: flex; align-items: center; gap: 9px; background: var(--tc-bg);
+    }
+    .role-comment-icon { font-size: 17px; flex-shrink: 0; }
+    .role-comment-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 12px; font-weight: 600; color: var(--tc); letter-spacing: .02em;
+    }
+    .role-comment-body { padding: 14px 20px; font-size: 13px; line-height: 1.85; color: var(--text); font-weight: 300; }
+
+    /* ── detail-body 以下のセクション ── */
+    .detail-body { display: flex; flex-direction: column; padding-bottom: 60px; }
+    .sec { border-bottom: 1px solid var(--div); }
+    .sec-head { padding: 15px 20px 13px; border-bottom: 1px solid var(--div); }
+    .sec-label-text { font-size: 9.5px; letter-spacing: .16em; color: var(--text2); font-weight: 400; }
+    .sec-body { padding: 16px 20px; }
+
+    /* tips */
+    .tip { padding: 10px 0; border-bottom: 1px solid var(--div); display: flex; gap: 12px; }
+    .tip:last-child { border-bottom: none; }
+    .tip i { font-size: 14px; flex-shrink: 0; line-height: 1.7; font-style: normal; }
+    .tip span { font-size: 13px; line-height: 1.72; font-weight: 300; }
+
+    /* notes 2-col */
+    .note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--div); }
+    .note-card { background: #fff; padding: 14px; }
+    .note-card h4 {
+      font-size: 9px; letter-spacing: .12em; color: var(--text2);
+      margin-bottom: 6px; font-weight: 400; font-family: 'Noto Sans JP', sans-serif;
+    }
+    .note-card p { font-size: 11.5px; line-height: 1.7; font-weight: 300; }
+
+    /* SNS titles */
+    .title-item {
+      padding: 13px 0; border-bottom: 1px solid var(--div);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .title-item:last-child { border-bottom: none; }
+    .title-t { font-size: 13px; font-weight: 300; line-height: 1.55; flex: 1; }
+    .cp-btn {
+      background: none; border: 1px solid var(--div); padding: 5px 11px;
+      font-size: 10px; color: var(--text2); cursor: pointer; white-space: nowrap;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* videos */
+    .vid-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 12px 0; border-bottom: 1px solid var(--div);
+      text-decoration: none; color: var(--text);
+    }
+    .vid-link:last-child { border-bottom: none; }
+    .vid-icon { font-size: 17px; flex-shrink: 0; }
+    .vid-info { flex: 1; min-width: 0; }
+    .vid-title { font-size: 12px; font-weight: 400; }
+    .vid-sub { font-size: 10px; color: var(--text3); margin-top: 2px; }
+    .vtag { font-size: 8.5px; font-weight: 700; padding: 2px 7px; white-space: nowrap; }
+    .vt-m { background: var(--ai-bg); color: #2A5C3A; }
+    .vt-a { background: var(--ai-bg); color: var(--text2); }
+
+    @media (max-width: 380px) {
+      .note-grid { grid-template-columns: 1fr; }
+      .recipe-layout { grid-template-columns: 1fr; }
+      .recipe-col + .recipe-col { border-left: none; border-top: 1px solid var(--div); }
+    }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* Pollinations.ai — 無料・APIキー不要 */
+const POLLINATIONS_BASE = 'https://image.pollinations.ai/prompt';
+
+/* エクスポートHTML用: スタッフ共有時に画像を埋め込むための変数。
+   通常版では空。exportHTML()で生成したファイルには実際の画像データが入る */
+const EMBEDDED_IMAGES = {};
+
+function saveImage(id, dataUrl) {
+  try { localStorage.setItem(`ohisama_img_${id}`, dataUrl); } catch(e) {}
+}
+function getStoredImage(id) {
+  return EMBEDDED_IMAGES[id] || localStorage.getItem(`ohisama_img_${id}`);
+}
+
+function applyImage(id, src) {
+  const area = document.getElementById(`ia-${id}`);
+  if (area) {
+    area.innerHTML = `<img src="${src}" alt="盛り付けイメージ">`;
+  }
+  saveImage(id, src);
+  const listImg = document.querySelector(`.recipe-card[data-id="${id}"] .card-img-area`);
+  if (listImg) listImg.innerHTML = `<img src="${src}" alt="">`;
+}
+
+/* スマホ写真は数MBになることが多くlocalStorageの上限を超えるため
+   アップロード時に最大1024x768・JPEG品質0.82にリサイズしてから保存する */
+function resizeAndUpload(id, file) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const maxW = 1024, maxH = 768;
+      let w = img.naturalWidth, h = img.naturalHeight;
+      if (w > maxW || h > maxH) {
+        const ratio = Math.min(maxW / w, maxH / h);
+        w = Math.round(w * ratio);
+        h = Math.round(h * ratio);
+      }
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      applyImage(id, canvas.toDataURL('image/jpeg', 0.82));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleImageUpload(id, input) {
+  const file = input.files[0];
+  if (!file) return;
+  resizeAndUpload(id, file);
+}
+
+/* ── 5 ROLES ── */
+const ROLES = [
+  { icon: '📷', name: 'フォト\nグラファー',  desc: '撮影アングル\nライティング\n構図アドバイス' },
+  { icon: '🥦', name: '料理家\n栄養士',       desc: '栄養バランス\n美味しさコメント' },
+  { icon: '📣', name: 'SNS\nマーケター',      desc: 'タイトル5案\nキャプション' },
+  { icon: '🎨', name: 'スタイ\nリスト',       desc: '食器・小道具\n背景色の提案' },
+  { icon: '✍️', name: 'レシピ\nライター',     desc: '撮影用手順\n工程メモ整理' },
+];
+
+/* ── RECIPE DATA ── */
+const RECIPES = [
+  {
+    id: 101,
+    name: 'アサリときくらげの四川風炒め',
+    sub: 'にんにくの芽と旨辛スープで仕上げる',
+    by: 'Jaws',
+    emoji: '🦪',
+    bg: '#1A1209',
+    tamachan: ['生きくらげ 50g', '三十雑穀チゲスープ 大さじ1'],
+    ingredients: ['あさりの水煮缶 200g','にんにくの芽 50g（約3本）','にんじん 1/4本','サラダ油 大さじ1','料理酒 大さじ3','しょうゆ 大さじ1/2（A）','料理酒 大さじ1/2（A）','水溶き片栗粉 適量'],
+    ingredientsAI: ['ごま（仕上げの映え・香り）','ラー油（辛み＋赤の色味）','細ねぎ（緑の差し色）'],
+    steps: [
+      'にんにくの芽は5cm長さに切る。にんじんは5cm長さの細い短冊切りにする。きくらげは石突を取り除く',
+      'フライパンに油を熱してあさりを大きく炒め、①を加える',
+      '酒をまわし入れ、ふたをして蒸す。口が開き始めたら（A）と三十雑穀チゲスープを加える',
+      '全体に火が通ったら水溶き片栗粉でとろみをつけ、ごまと細ねぎを散らす'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Sichuan-style stir-fry dish: plump baby clams, jet-black wood ear mushrooms (kikurage) with distinctive ruffled texture, diagonal-cut garlic scapes, and thin julienned carrots, all coated in a thick glossy dark-red spicy sauce with visible starch glaze and tiny chili flakes. Served generously in a matte dark charcoal-grey deep ceramic bowl with a rough stoneware texture. Bowl placed on a weathered dark walnut wooden table with subtle wood grain. Wooden chopsticks with dark tips resting diagonally across the bowl rim. A thin streak of chili oil drizzled across the top. Toasted sesame seeds and thinly sliced green onion rings scattered naturally. Faint steam wisps rising from the hot dish. Camera positioned at 52-degree overhead angle — optimal to simultaneously reveal the depth of the bowl, the layered ingredients, and the glossy sauce surface. Natural warm daylight entering from the upper-left, creating gentle side shadows that give volume to the mushrooms and clams. Slight shallow depth of field with background softly blurred. Japanese food magazine aesthetic. Cinematic warm amber color grading. Extremely sharp focus on food surface. No text. No watermark.',
+    proComments: [
+      'カメラは50度の斜め俯瞰が最適。とろみソースが光を反射するので、左上から自然光を当てると立体感が出る。湯気が上がる10秒以内を狙って、複数テイク撮っておくこと。黒い鉄フライパンのまま提供する盛り付けも画になる。',
+      'きくらげの食感を残すために加熱しすぎないこと。あさりの缶汁は旨みの塊なのでそのまま使う。チゲスープに塩分があるので醤油は控えめに。片栗粉のとろみは「一呼吸おいてからまとめる」タイミングを大切に。',
+      '「四川風」より「旨辛」キーワードが刺さりやすい。市場調査でも旨辛×中華×缶詰の組み合わせが伸びる傾向が出ている。サムネは黒×赤×緑のコントラストを最大限活かして。ラー油を垂らす瞬間の動画は再生数が伸びやすい。',
+      '黒い鉄フライパンかマット質感のグレー深皿を選択。背景はダークウォールナット木目かダークグリーンのリネンが◎。仕上げにラー油を一筋垂らして赤いアクセントを入れると映え度UP。細ねぎとごまは直前に散らして鮮度感を出す。',
+      '工程の「とろみをつける→ごまを散らす」流れを手元アップで撮れると料理感が伝わる。片栗粉のとろみ具合とごまを散らす瞬間は必ず別カットで収録。あさりの水煮缶をあけるシーンも「時短感」を伝えるポイントとして有効。'
+    ],
+    tips: [
+      { icon:'🎯', text:'黒×緑×オレンジのコントラストを生かした構図。黒いマット器か白の深皿が映える' },
+      { icon:'📐', text:'斜め50度アングル推奨。とろみソースのテクスチャーと食材のボリューム感が伝わる' },
+      { icon:'💡', text:'湯気が立ち上るシーンを狙う。暗めのサイドライトで中華料理の重厚感を演出' },
+      { icon:'✨', text:'ラー油を垂らす瞬間・ごまを散らす瞬間も動画で収めるとリッチな印象に' },
+      { icon:'🍳', text:'黒い鉄フライパンのまま提供する盛り付けも映える（本格中華感が出る）' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'あさりは鉄分・B12豊富。きくらげは食物繊維・ビタミンD含む低カロリー食材' },
+      { title:'美味しさのコツ', text:'チゲスープの旨みが全体をまとめる。片栗粉のとろみで味がよく絡みご飯との相性◎' },
+      { title:'ひと足しポイント', text:'にんじんの甘みが辛みを中和。ごま油少々で仕上げると風味がさらに増す' },
+      { title:'アレルギー注意', text:'あさり（貝類）・小麦（しょうゆ）含む。グルテンフリー醤油で代替可能' }
+    ],
+    titles: [
+      '缶詰あさりなのに 本格四川炒め できました',
+      'チゲスープ1杯足して 旨辛あさりときくらげ できました',
+      'なぜか箸が止まらない きくらげとあさりの旨辛炒め できました',
+      'とろみソースがごはんに合う 四川風あさり炒め できました',
+      'プリプリ食感と旨みの塊 あさりときくらげの中華炒め できました',
+    ],
+    refVideos: [{ url:'https://www.kikkoman.co.jp/homecook/search/recipe/00001248/', title:'参考レシピ（キッコーマン）', sub:'kikkoman.co.jp' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=あさり+きくらげ+中華炒め+ショート', title:'YouTube：あさり きくらげ 中華炒め' },{ url:'https://www.youtube.com/results?search_query=四川風炒め+きくらげ+Shorts', title:'YouTube：四川風炒め Shorts' }]
+  },
+  {
+    id: 102,
+    name: '和風きくらげペペロンチーノ',
+    sub: 'きくらげと出汁スープで和テイストにアレンジ',
+    by: 'くわ',
+    emoji: '🍝',
+    bg: '#111A0C',
+    tamachan: ['生きくらげ 100g', '三十雑穀出汁スープ 大さじ1'],
+    ingredients: ['スパゲティ 180g','にんにく 2かけ（みじん切り）','輪切り鷹の爪 1〜2本','オリーブオイル 大さじ3＋適量','塩 小さじ1/4','パスタの茹で汁 約70cc'],
+    ingredientsAI: ['青じそ（和風感UP・彩り）','海苔（風味と映え）','レモン（爽やかさ追加）'],
+    steps: [
+      '鍋に1.5ℓの湯を沸かし塩を入れてスパゲティを茹でる。にんにくは芽をとり、みじん切りにする',
+      'フライパンにオリーブオイル・にんにく・鷹の爪を入れて中火にかけ、焦げないよう炒める',
+      '香りがたったらきくらげを入れてさっと炒め、茹で汁約70ccを加えてフライパンを回しながら加熱する',
+      '表記より少し早めに茹で上げたスパゲティと三十雑穀出汁スープを加えてよく絡める'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese-style aglio e olio pasta (wafu peperoncino): long spaghetti strands twisted into an elegant tall mound using chopsticks, each strand individually coated in a silky golden olive oil and dashi emulsion that catches the light. Jet-black wood ear mushrooms (kikurage) with their distinctive wavy ruffled edges scattered throughout and visible on top. Thin rounds of golden-toasted garlic slices and small red chili flakes visible between the pasta. Plated in a wide shallow matte warm-white Japanese ceramic plate with a slightly raised rim. Plate rests on a pale natural oak wood table with soft grain texture. Japanese lacquered chopsticks placed neatly beside the plate. Three fresh green shiso leaves torn and scattered naturally. Thin crisp strips of roasted nori arranged on top. Light drizzle of extra virgin olive oil catching the light. Soft steam. Camera positioned at 38-degree low angle — ideal for pasta to emphasize the height of the mound, show strand texture, and reveal the glossy oil coating. Warm diffused window light from the left, creating gentle highlights along the pasta twirl. Bokeh background. Japanese food magazine quality. Warm cream and gold tones. Sharp focus on pasta texture. No text. No watermark.',
+    proComments: [
+      '麺の盛り付けは箸でくるっと巻いた高さのある盛りつけにして。オイルのツヤが引き立つ45〜50度アングルが最適。側面から柔らかい自然光を当てると麺の透明感と艶が出る。オイルをかけ回す直前が一番輝くので、そのシーンを逃さずに。',
+      '茹で汁を加えてフライパンを振る「乳化」がこの料理の命。パスタの茹ですぎは絶対に避けること——al dente手前でソースに投入する。きくらげはさっと炒める程度にして食感を残す。出汁スープの量は加減しながら塩分を調節して。',
+      '「和風ペペロンチーノ」はニッチだが刺さる層が明確。市場調査でもガーリックバター和風きのこパスタ系が400〜500万再生を記録している。箸で食べる動画は和洋融合感があってバズりやすい。「コリコリが止まらない」「だし香る」系コピーを前に出して。',
+      '白か薄グレーの浅い丸皿を選択。青じそと刻み海苔の緑×黒コントラストが決め手なので、盛り付け直前に追加する。背景に木目のカッティングボードや箸を添えると和テイストが強まる。テーブルクロスはリネン生成り色が◎。',
+      '「茹で汁を加えてフライパンを回す」シーンと「麺を絡める」シーンは動画映えするので長めに収録する。最後に青じそと海苔をのせるシーンは俯瞰でサクッと撮ると映える。箸で食べるシーンも必ず入れること。'
+    ],
+    tips: [
+      { icon:'🎯', text:'黒いきくらげのコントラストと黄金のオイルソースが映える。白か薄いグレーの浅いお皿が◎' },
+      { icon:'📐', text:'俯瞰または45度で。麺のボリュームとオイルのツヤ感が出るアングルを選ぶ' },
+      { icon:'💡', text:'自然光を斜めから当てると麺のテクスチャーが際立つ。木目の背景で和洋折衷の雰囲気に' },
+      { icon:'✨', text:'盛り付け後に青じそや海苔をのせる瞬間、またはオイルをまわしかける瞬間を動画で収める' },
+      { icon:'🌿', text:'パスタを箸でくるっとまとめた盛り付けで和風感を強調。フォークより箸が絵になる' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'きくらげは低カロリーで食物繊維・ビタミンD豊富。出汁スープで塩分を抑えながら旨みをプラス' },
+      { title:'美味しさのコツ', text:'茹で汁の乳化がポイント。フライパンを回してオイルとよく混ぜるとクリーミーに仕上がる' },
+      { title:'ひと足しポイント', text:'三十雑穀出汁スープがペペロンチーノに和の旨みを加える。仕上げに黒胡椒を多めにかけると引き締まる' },
+      { title:'アレルギー注意', text:'小麦（パスタ）含む。グルテンフリーはライスパスタで代替可能' }
+    ],
+    titles: [
+      '箸で食べる きくらげ和風ペペロンチーノ できました',
+      '出汁スープを足したら 和のペペロンチーノ できました',
+      'コリコリが止まらない きくらげ出汁パスタ できました',
+      'フォークいらず だし香るきくらげペペロンチーノ できました',
+      'ひと足しで別物 きくらげ和風ペペロンチーノ できました',
+    ],
+    refVideos: [{ url:'https://ameblo.jp/hikaritoyuuki/entry-12822043001.html', title:'参考レシピ（アメブロ）', sub:'ameblo.jp' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=きくらげ+ペペロンチーノ+和風+ショート', title:'YouTube：きくらげ 和風ペペロンチーノ' },{ url:'https://www.youtube.com/results?search_query=和風パスタ+きのこ+Shorts', title:'YouTube：和風パスタ きのこ Shorts' }]
+  }
+];
+
+/* ── 5プロによるマスタープロンプト構築 ── */
+function buildMasterPrompt(r) {
+  const mainIngs = [...r.tamachan, ...r.ingredients].slice(0, 6).join(', ');
+  const writer = `Dish name: "${r.name}". ${r.sub}. Key ingredients: ${mainIngs}.`;
+  const stylist = 'Matte grey speckled ceramic plate or dark cast iron. Dark walnut wooden table surface. Natural linen napkin accent. Minimal garnish, clean presentation.';
+  const photographer = 'Camera angle 50 degrees overhead. Natural window light entering from upper-left, warm amber tone. Soft shadow for depth. Slight bokeh background. Sharp focus on food texture and surface detail.';
+  const chef = 'Food looks perfectly cooked: vibrant natural colors, correct textures (glossy sauce, visible steam, proper doneness). Generous hearty portion. Appetizing, natural, not over-styled.';
+  const sns = 'Composition optimized for Japanese short-form video thumbnail. Food fills 70% of frame. Mouth-watering, scroll-stopping. Warm, inviting, natural atmosphere. @for_thetable TikTok aesthetic.';
+
+  return `Hyperrealistic professional food photography. Ultra-detailed, photographic quality.
+
+[Recipe Writer] ${writer}
+[Food Stylist] ${stylist}
+[Food Photographer] ${photographer}
+[Chef/Nutritionist] ${chef}
+[SNS Marketer] ${sns}
+
+Overall style: restaurant-quality home cooking on natural ceramic plates with dark wooden background. Warm tones. No text overlays. Real food only.`;
+}
+
+/* ── 画像生成用プロンプト：実際の材料を動的注入 ── */
+function buildImagePrompt(r) {
+  const clean = s => s.replace(/\s*[\d／〜]+.*$/, '').replace(/\s*(大さじ|小さじ|カップ|本|個|枚|缶|cc|g|ml).*$/, '').trim();
+  const tcItems  = r.tamachan.map(clean).join(', ');
+  const ingItems = r.ingredients.slice(0, 6).map(clean).join(', ');
+  const ingLine  = `The dish must visibly contain ALL of these specific ingredients: ${tcItems}, ${ingItems}.`;
+  return `${ingLine} ${r.imgPrompt}`;
+}
+
+function clearAndGenerate(id) {
+  localStorage.removeItem(`ohisama_img_${id}`);
+  generateImage(id);
+}
+
+/* ── POLLINATIONS IMAGE GENERATION（無料・APIキー不要・img src方式） ── */
+function generateImage(id) {
+  const r    = RECIPES.find(r => r.id === id);
+  const area = document.getElementById(`ia-${id}`);
+  const btn  = document.getElementById(`bg-${id}`);
+
+  const num = RECIPES.findIndex(x => x.id === id) + 1;
+  area.innerHTML = `
+    <span class="detail-hero-emoji">${r.emoji}</span>
+    <div class="detail-hero-num">${num}</div>
+    <div class="img-loading">
+      <div class="spinner"></div>
+      <div class="img-loading-roles">
+        <span>✍️ レシピ確認中</span>
+        <span>🎨 スタイリング設計中</span>
+        <span>📷 構図・光を設定中</span>
+        <span>🥦 仕上がりを監査中</span>
+        <span>📣 バズ構図を最適化中</span>
+      </div>
+      <div class="img-loading-text">生成中… 30秒ほどお待ちください</div>
+    </div>`;
+  if (btn) { btn.disabled = true; btn.textContent = '生成中…'; }
+
+  const prompt = buildImagePrompt(r);
+  const url = `${POLLINATIONS_BASE}/${encodeURIComponent(prompt)}?width=1024&height=768&model=flux-realism&nologo=true&enhance=true&seed=${r.id}`;
+
+  const img = new Image();
+  img.onload = () => {
+    /* ユーザーが手動でアップロードした場合（data:で始まる）は上書きしない */
+    const manuallySet = (localStorage.getItem(`ohisama_img_${id}`) || '').startsWith('data:');
+    if (!manuallySet) applyImage(id, url);
+    if (btn) { btn.disabled = false; btn.textContent = '🔄 再生成'; }
+  };
+  img.onerror = () => {
+    area.innerHTML = `
+      <span class="detail-hero-emoji">${r.emoji}</span>
+      <div class="detail-hero-num">${num}</div>
+      <div class="img-error">
+        <div class="img-error-text">⚠️ 生成に失敗しました<br>ネットワーク接続を確認してください</div>
+      </div>`;
+    if (btn) { btn.disabled = false; btn.textContent = '再試行'; }
+  };
+  img.src = url;
+}
+
+/* ── INGREDIENT PARSER ── */
+function parseIng(s) {
+  const m = s.match(/^(.+?)\s+(\d.*|大さじ.*|小さじ.*|カップ.*|適量.*|少々.*)$/);
+  return m ? [m[1].trim(), m[2].trim()] : [s, ''];
+}
+
+/* ── HTML BUILDERS ── */
+function roleBanner(r) {
+  const cards = ROLES.map((ro, i) => `
+    <div class="role-banner-card" onclick="toggleRoleComment(${r.id}, ${i})">
+      <div class="role-banner-icon">${ro.icon}</div>
+      <div class="role-banner-name">${ro.name.replace(/\n/g,'<br>')}</div>
+      <div class="role-banner-desc">${ro.desc.replace(/\n/g,'<br>')}</div>
+    </div>`).join('');
+  return `<div id="rb-${r.id}" class="role-banner">${cards}</div>`;
+}
+
+function toggleRoleComment(recipeId, roleIdx) {
+  const r       = RECIPES.find(r => r.id === recipeId);
+  const cards   = document.querySelectorAll(`#rb-${recipeId} .role-banner-card`);
+  const box     = document.getElementById(`rc-${recipeId}`);
+  const isActive = cards[roleIdx].classList.contains('active');
+
+  cards.forEach(c => c.classList.remove('active'));
+
+  if (isActive) {
+    box.classList.remove('open');
+    box.innerHTML = '';
+    return;
+  }
+
+  cards[roleIdx].classList.add('active');
+  const ro = ROLES[roleIdx];
+  box.innerHTML = `
+    <div class="role-comment-head">
+      <span class="role-comment-icon">${ro.icon}</span>
+      <span class="role-comment-name">${ro.name.replace(/\n/g,'')}</span>
+    </div>
+    <div class="role-comment-body">${r.proComments[roleIdx]}</div>`;
+  box.classList.add('open');
+}
+
+function listHTML() {
+  const cards = RECIPES.map((r, idx) => {
+    const stored = getStoredImage(r.id);
+    const tcTags = r.tamachan.slice(0,2).map(t => `<span class="card-tc-tag">${t.split(' ')[0]}</span>`).join('');
+    return `
+    <div class="recipe-card" data-id="${r.id}">
+      <div class="card-img-area">
+        ${stored ? `<img src="${stored}" alt="${r.name}">` : `<span class="card-img-emoji">${r.emoji}</span>`}
+        <div class="card-num">${idx + 1}</div>
+      </div>
+      <div class="card-info">
+        <div class="card-recipe-name">${r.name}</div>
+        <div class="card-recipe-sub">${r.sub}</div>
+        <div class="card-meta">
+          <div class="card-tc-tags">${tcTags}</div>
+          <span class="card-recipe-by">by ${r.by}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `
+    <div class="header">
+      <div class="header-inner">
+        <div><div class="logo-title">撮影準備シート</div><div class="logo-sub">おひとり様キッチン</div></div>
+        <button id="btn-export" class="btn-export" onclick="exportHTML()">HTMLを書き出し</button>
+      </div>
+    </div>
+    <div class="list-top">
+      <div class="list-top-label">SHOOTING PREP SHEET</div>
+      <h2>レシピ一覧</h2>
+      <p>タップして詳細・撮影準備情報を確認</p>
+    </div>
+    <div class="recipe-list">${cards}</div>`;
+}
+
+function ingRow(raw, badge) {
+  const [nm, qty] = parseIng(raw);
+  return `<li class="ing-item">
+    ${badge ? `<span class="ing-badge ${badge === 'tc' ? 'b-tc' : 'b-ai'}">${badge === 'tc' ? 'TC' : 'AI'}</span>` : ''}
+    <span class="ing-name">${nm}</span>
+    <span class="ing-dots"></span>
+    <span class="ing-qty">${qty}</span>
+  </li>`;
+}
+
+function detailHTML(r) {
+  const stored  = getStoredImage(r.id);
+  const recipeNum = RECIPES.findIndex(x => x.id === r.id) + 1;
+
+  const ingHTML = [
+    ...r.tamachan.map(i => ingRow(i, 'tc')),
+    ...r.ingredients.map(i => ingRow(i, '')),
+    ...r.ingredientsAI.map(i => ingRow(i, 'ai'))
+  ].join('');
+  const stepsHTML = r.steps.map((s,i) => `
+    <div class="step">
+      <div class="step-n">${i+1}</div>
+      <div class="step-t">${s}</div>
+    </div>`).join('');
+  const tips   = r.tips.map(t => `<div class="tip"><i>${t.icon}</i><span>${t.text}</span></div>`).join('');
+  const notes  = r.notes.map(n => `<div class="note-card"><h4>${n.title}</h4><p>${n.text}</p></div>`).join('');
+  const titles = r.titles.map(t => `<div class="title-item"><div class="title-t">${t}</div><button class="cp-btn" onclick="cpText(${JSON.stringify(t)},this)">コピー</button></div>`).join('');
+  const vids   = [
+    ...r.refVideos.map(v => `<a href="${v.url}" target="_blank" class="vid-link"><span class="vid-icon">🔗</span><div class="vid-info"><div class="vid-title">${v.title}</div><div class="vid-sub">${v.sub}</div></div><span class="vtag vt-m">登録済み</span></a>`),
+    ...r.autoVideos.map(v => `<a href="${v.url}" target="_blank" class="vid-link"><span class="vid-icon">🔍</span><div class="vid-info"><div class="vid-title">${v.title}</div><div class="vid-sub">検索する</div></div><span class="vtag vt-a">自動提案</span></a>`)
+  ].join('');
+
+  return `
+    <div class="header">
+      <div class="header-inner">
+        <div class="back-btn" onclick="nav('list')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          一覧に戻る
+        </div>
+        <div class="logo-sub">RECIPE ${recipeNum}</div>
+      </div>
+    </div>
+
+    <div class="detail-hero-img" id="ia-${r.id}">
+      ${stored
+        ? `<img src="${stored}" alt="${r.name}"><div class="detail-hero-num">${recipeNum}</div>`
+        : `<span class="detail-hero-emoji">${r.emoji}</span>
+           <div class="detail-hero-placeholder"><div class="detail-hero-placeholder-label">生成中…</div></div>
+           <div class="detail-hero-num">${recipeNum}</div>`}
+    </div>
+
+    <div class="img-action-bar">
+      <button class="btn-gen" id="bg-${r.id}" onclick="clearAndGenerate(${r.id})">AI 盛り付け生成</button>
+      <label class="btn-upload">📸 写真を選択<input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(${r.id},this)"></label>
+      <button class="btn-copy-p" onclick="cpPrompt(${r.id},this)">📋</button>
+    </div>
+    <div class="prompt-area">
+      <button class="prompt-toggle" onclick="toggleP(${r.id})">プロンプトを表示</button>
+      <div class="prompt-text" id="pt-${r.id}">${buildImagePrompt(r)}</div>
+    </div>
+    <a href="https://pollinations.ai" target="_blank" class="nano-link">↗ Pollinations.ai で手動生成</a>
+
+    <div class="detail-title-block">
+      <div class="detail-row-label">OHITOSAMAKITCHEN &nbsp;·&nbsp; RECIPE ${String(recipeNum).padStart(2,'0')}</div>
+      <div class="detail-name">${r.name}</div>
+      <div class="detail-sub">${r.sub}</div>
+      <div class="detail-by">by ${r.by}</div>
+    </div>
+
+    <!-- 材料 & 作り方 2カラム -->
+    <div class="recipe-layout">
+      <div class="recipe-col">
+        <div class="recipe-col-head">材料 <span>1人分</span></div>
+        <ul class="ing-list">${ingHTML}</ul>
+      </div>
+      <div class="recipe-col">
+        <div class="recipe-col-head">作り方</div>
+        ${stepsHTML}
+      </div>
+    </div>
+
+    ${roleBanner(r)}
+    <div id="rc-${r.id}" class="role-comment"></div>
+
+    <div class="detail-body">
+      <div class="sec"><div class="sec-head"><span class="sec-label-text">撮影ポイント</span></div><div class="sec-body">${tips}</div></div>
+      <div class="sec"><div class="sec-head"><span class="sec-label-text">料理家・栄養士メモ</span></div><div class="sec-body"><div class="note-grid">${notes}</div></div></div>
+      <div class="sec"><div class="sec-head"><span class="sec-label-text">SNSタイトル案</span></div><div class="sec-body">${titles}</div></div>
+      <div class="sec"><div class="sec-head"><span class="sec-label-text">参考動画・レシピ</span></div><div class="sec-body">${vids}</div></div>
+    </div>`;
+}
+
+/* ── ROUTER ── */
+function nav(target) {
+  const app = document.getElementById('app');
+  if (target === 'list') {
+    app.innerHTML = listHTML();
+    window.scrollTo(0,0);
+    document.querySelectorAll('.recipe-card').forEach(el =>
+      el.addEventListener('click', () => nav(parseInt(el.dataset.id)))
+    );
+  } else {
+    const r = RECIPES.find(r => r.id === parseInt(target));
+    if (r) {
+      app.innerHTML = detailHTML(r);
+      window.scrollTo(0,0);
+      if (!getStoredImage(r.id)) {
+        setTimeout(() => generateImage(r.id), 300);
+      }
+    }
+  }
+}
+
+/* ── HTML EXPORT ── */
+async function urlToBase64(url) {
+  try {
+    const res = await fetch(url);
+    const blob = await res.blob();
+    return await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(blob);
+    });
+  } catch { return null; }
+}
+
+async function exportHTML() {
+  const btn = document.getElementById('btn-export');
+  if (btn) { btn.disabled = true; btn.textContent = '書き出し中…'; }
+
+  const images = {};
+  for (const r of RECIPES) {
+    const stored = localStorage.getItem(`ohisama_img_${r.id}`);
+    if (!stored) continue;
+    if (stored.startsWith('data:')) {
+      images[r.id] = stored;
+    } else {
+      /* Pollinations URL → base64に変換 */
+      const b64 = await urlToBase64(stored);
+      if (b64) images[r.id] = b64;
+    }
+  }
+
+  let html = document.documentElement.outerHTML;
+  /* EMBEDDED_IMAGES の空オブジェクトを実データに差し替え */
+  html = html.replace('const EMBEDDED_IMAGES = {};', `const EMBEDDED_IMAGES = ${JSON.stringify(images)};`);
+
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  const date = new Date().toISOString().slice(0, 10);
+  a.download = `撮影準備シート_${date}.html`;
+  a.click();
+
+  if (btn) { btn.disabled = false; btn.textContent = 'HTMLを書き出し'; }
+}
+
+/* ── UTILS ── */
+function cpText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const o = btn.textContent; btn.textContent = '✅';
+    setTimeout(() => btn.textContent = o, 1800);
+  });
+}
+function cpPrompt(id, btn) {
+  const r = RECIPES.find(r => r.id === id);
+  navigator.clipboard.writeText(buildMasterPrompt(r)).then(() => {
+    const o = btn.innerHTML; btn.textContent = '✅';
+    setTimeout(() => btn.innerHTML = o, 1800);
+  });
+}
+function toggleP(id) {
+  const el = document.getElementById(`pt-${id}`);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+nav('list');
+</script>
+
+
+</body></html>
