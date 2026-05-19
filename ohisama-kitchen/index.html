@@ -55,6 +55,21 @@
     }
     .list-top p { font-size: 12px; color: var(--text3); margin-top: 5px; }
 
+    /* ─── TABS ─── */
+    .tab-bar {
+      display: flex; border-bottom: 1px solid var(--div);
+      background: #fff; position: sticky; top: 48px; z-index: 90;
+    }
+    .tab-btn {
+      flex: 1; padding: 12px 0; font-size: 11px; font-weight: 400;
+      color: var(--text3); background: none; border: none;
+      cursor: pointer; letter-spacing: .06em;
+      font-family: 'Noto Sans JP', sans-serif;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn.active { color: var(--text); border-bottom-color: var(--ink); font-weight: 500; }
+
     .recipe-list { display: flex; flex-direction: column; }
 
     .recipe-card {
@@ -387,6 +402,7 @@ const ROLES = [
 const RECIPES = [
   {
     id: 101,
+    past: true,
     name: 'アサリときくらげの四川風炒め',
     sub: 'にんにくの芽と旨辛スープで仕上げる',
     by: 'Jaws',
@@ -434,6 +450,7 @@ const RECIPES = [
   },
   {
     id: 102,
+    past: true,
     name: '和風きくらげペペロンチーノ',
     sub: 'きくらげと出汁スープで和テイストにアレンジ',
     by: 'くわ',
@@ -696,8 +713,10 @@ function toggleRoleComment(recipeId, roleIdx) {
   box.classList.add('open');
 }
 
-function listHTML() {
-  const cards = RECIPES.map((r, idx) => {
+function listHTML(tab) {
+  tab = tab || 'next';
+  const filtered = RECIPES.filter(r => tab === 'past' ? r.past : !r.past);
+  const cards = filtered.map((r, idx) => {
     const stored = getStoredImage(r.id);
     const tcTags = r.tamachan.slice(0,2).map(t => `<span class="card-tc-tag">${t.split(' ')[0]}</span>`).join('');
     return `
@@ -715,19 +734,22 @@ function listHTML() {
         </div>
       </div>
     </div>`;
-  }).join('');
+  }).join('') || '<div style="padding:40px 20px;text-align:center;color:var(--text3);font-size:12px;">レシピがありません</div>';
 
   return `
     <div class="header">
       <div class="header-inner">
         <div><div class="logo-title">撮影準備シート</div><div class="logo-sub">おひとり様キッチン</div></div>
-        <button id="btn-export" class="btn-export" onclick="exportHTML()">HTMLを書き出し</button>
       </div>
     </div>
     <div class="list-top">
       <div class="list-top-label">SHOOTING PREP SHEET</div>
       <h2>レシピ一覧</h2>
       <p>タップして詳細・撮影準備情報を確認</p>
+    </div>
+    <div class="tab-bar">
+      <button class="tab-btn ${tab === 'next' ? 'active' : ''}" onclick="nav('list','next')">次の撮影レシピ</button>
+      <button class="tab-btn ${tab === 'past' ? 'active' : ''}" onclick="nav('list','past')">過去の撮影レシピ</button>
     </div>
     <div class="recipe-list">${cards}</div>`;
 }
@@ -784,15 +806,9 @@ function detailHTML(r) {
     </div>
 
     <div class="img-action-bar">
-      <button class="btn-gen" id="bg-${r.id}" onclick="clearAndGenerate(${r.id})">AI 盛り付け生成</button>
-      <label class="btn-upload">📸 写真を選択<input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(${r.id},this)"></label>
-      <button class="btn-copy-p" onclick="cpPrompt(${r.id},this)">📋</button>
+      <label class="btn-gen" style="display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;">📸 写真をアップロード<input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(${r.id},this)"></label>
+      ${getStoredImage(r.id) ? `<button class="btn-upload" onclick="clearPhoto(${r.id})">削除</button>` : ''}
     </div>
-    <div class="prompt-area">
-      <button class="prompt-toggle" onclick="toggleP(${r.id})">プロンプトを表示</button>
-      <div class="prompt-text" id="pt-${r.id}">${buildImagePrompt(r)}</div>
-    </div>
-    <a href="https://pollinations.ai" target="_blank" class="nano-link">↗ Pollinations.ai で手動生成</a>
 
     <div class="detail-title-block">
       <div class="detail-row-label">OHITOSAMAKITCHEN &nbsp;·&nbsp; RECIPE ${String(recipeNum).padStart(2,'0')}</div>
@@ -825,10 +841,12 @@ function detailHTML(r) {
 }
 
 /* ── ROUTER ── */
-function nav(target) {
+let _currentTab = 'next';
+function nav(target, tab) {
   const app = document.getElementById('app');
   if (target === 'list') {
-    app.innerHTML = listHTML();
+    if (tab) _currentTab = tab;
+    app.innerHTML = listHTML(_currentTab);
     window.scrollTo(0,0);
     document.querySelectorAll('.recipe-card').forEach(el =>
       el.addEventListener('click', () => nav(parseInt(el.dataset.id)))
@@ -838,9 +856,6 @@ function nav(target) {
     if (r) {
       app.innerHTML = detailHTML(r);
       window.scrollTo(0,0);
-      if (!getStoredImage(r.id)) {
-        setTimeout(() => generateImage(r.id), 300);
-      }
     }
   }
 }
@@ -891,6 +906,11 @@ async function exportHTML() {
 }
 
 /* ── UTILS ── */
+function clearPhoto(id) {
+  localStorage.removeItem(`ohisama_img_${id}`);
+  nav(id);
+}
+
 function cpText(text, btn) {
   navigator.clipboard.writeText(text).then(() => {
     const o = btn.textContent; btn.textContent = '✅';
