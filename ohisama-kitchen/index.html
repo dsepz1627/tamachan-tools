@@ -352,7 +352,7 @@ function githubImgUrl(id) { return `${GITHUB_RAW_BASE}/recipe-${id}.jpg`; }
 
 async function uploadImageToGitHub(id, dataUrl) {
   const pat = getGitHubPAT();
-  if (!pat) return false;
+  if (!pat) return { ok: false, msg: 'PAT未設定' };
   const path = `${GITHUB_IMG_PATH}/recipe-${id}.jpg`;
   const base64Content = dataUrl.split(',')[1];
   let sha;
@@ -362,12 +362,18 @@ async function uploadImageToGitHub(id, dataUrl) {
     });
     if (r.ok) sha = (await r.json()).sha;
   } catch(e) {}
-  const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
-    method: 'PUT',
-    headers: { Authorization: `token ${pat}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github.v3+json' },
-    body: JSON.stringify({ message: `Add photo: recipe ${id}`, content: base64Content, ...(sha ? { sha } : {}) })
-  });
-  return res.ok;
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: { Authorization: `token ${pat}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github.v3+json' },
+      body: JSON.stringify({ message: `Add photo: recipe ${id}`, content: base64Content, ...(sha ? { sha } : {}) })
+    });
+    if (res.ok) return { ok: true };
+    const err = await res.json().catch(() => ({}));
+    return { ok: false, msg: `${res.status}: ${err.message || res.statusText}` };
+  } catch(e) {
+    return { ok: false, msg: `ネットワークエラー: ${e.message}` };
+  }
 }
 
 async function tryLoadGitHubImages() {
@@ -439,14 +445,16 @@ function resizeAndUpload(id, file) {
         badge.textContent = '☁️ GitHubに保存中…';
         area.appendChild(badge);
 
-        const ok = await uploadImageToGitHub(id, dataUrl);
-        if (ok) {
+        const result = await uploadImageToGitHub(id, dataUrl);
+        if (result.ok) {
           saveImage(id, githubImgUrl(id));
           badge.textContent = '✅ 全デバイスで共有済み';
+          setTimeout(() => badge.remove(), 3000);
         } else {
-          badge.textContent = '⚠️ 保存失敗（このデバイスのみ）';
+          badge.textContent = `⚠️ 失敗: ${result.msg}`;
+          badge.style.background = 'rgba(180,0,0,.7)';
+          setTimeout(() => badge.remove(), 8000);
         }
-        setTimeout(() => badge.remove(), 3000);
       }
     };
     img.src = e.target.result;
