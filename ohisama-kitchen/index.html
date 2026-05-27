@@ -498,6 +498,7 @@ const RECIPES = [
   },
   {
     id: 103,
+    past: true,
     name: '里芋のポテトサラダ',
     sub: 'だし粉とのりパリッチで磯香る和のポテサラ',
     by: 'くわ',
@@ -544,6 +545,7 @@ const RECIPES = [
   },
   {
     id: 104,
+    past: true,
     name: 'クローズドバーガー',
     sub: 'パイ生地で包む海外バズレシピをヘルシーアレンジ',
     by: 'Jaws',
@@ -589,6 +591,103 @@ const RECIPES = [
     ],
     refVideos: [{ url:'https://www.instagram.com/reel/DYJJh-nxBBX/?igsh=Y3hmOTllZ2d4dWJ6', title:'参考リール（Instagram）', sub:'instagram.com' }],
     autoVideos: [{ url:'https://www.youtube.com/results?search_query=クローズドバーガー+パイ包み+ショート', title:'YouTube：クローズドバーガー Shorts' },{ url:'https://www.youtube.com/results?search_query=closed+burger+puff+pastry+Shorts', title:'YouTube：closed burger puff pastry' }]
+  },
+  {
+    id: 105,
+    name: '鶏なす南蛮',
+    sub: '揚げずにできる、南蛮ダレがじゅわっと染み込む絶品おかず',
+    by: 'Jaws',
+    emoji: '🍆',
+    bg: '#140E08',
+    tamachan: ['特製たまねぎスープ 小さじ2'],
+    ingredients: ['なす 2本', '鶏もも肉 160g', '塩コショウ 適量', '片栗粉 大さじ1', 'サラダ油 大さじ1', '玉ねぎ 1/8玉', '醤油 大さじ1・1/2', 'お酢 大さじ1・1/2', '砂糖 大さじ1', '水 大さじ1', '鷹の爪 適量'],
+    ingredientsAI: ['細ねぎ（緑の差し色・彩り）', 'ごま（香ばしさ・映え）', '大葉（爽やかな香りと緑）'],
+    steps: [
+      'なすのヘタを取り、乱切りにする。耐熱容器に入れ、ラップをして電子レンジ（600W）で3分加熱する',
+      '玉ねぎを繊維に沿って薄切りにし、容器に入れる。醤油・お酢・砂糖・特製たまねぎスープ・水・鷹の爪を加えてよく混ぜ合わせ、南蛮ダレを作る',
+      '鶏もも肉をひと口大にそぎ切りにして塩コショウと片栗粉を揉み込む。フライパンに油を引き、鶏肉を片面ずつしっかり焼く',
+      '鶏肉に火が通ったら（1）のなすを加え、全体に油が回るように炒める',
+      '（4）が温かいうちに（2）の南蛮ダレに入れ、下からかき混ぜるようにして漬け込む'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese chicken and eggplant nanban dish: tender bite-sized chicken thigh pieces with golden-seared crust, alongside soft glossy eggplant chunks, all generously coated in a deep amber sweet-and-sour nanban tare sauce with visible sliced onion rings and scattered red chili flakes. The dish has a glistening lacquered appearance. Served in a wide deep matte dark charcoal ceramic bowl with subtle texture. Bowl placed on a weathered dark walnut wood surface. Bamboo chopsticks resting diagonally on the bowl rim. Scattered thin green onion rounds and white sesame seeds on top. A few shiso leaf strips draped over the chicken. Visible steam rising gently. Camera positioned at 48-degree overhead angle. Warm natural window light entering from upper-left, creating amber highlights on the sauce. Soft shadows give depth. Slight bokeh background. Japanese food magazine aesthetic. Cinematic warm amber color grading. No text. No watermark.',
+    proComments: [
+      '南蛮ダレのツヤが最大限映えるのは48〜50度の斜め俯瞰。ダレを絡めた直後の「光沢が最も強い30秒以内」を狙ってシャッターを切る。左上から差し込む自然光が液体系ソースのリフレクションを引き出す。黒い器かダークトーンの深皿を使うことで、琥珀色のタレが際立ち食欲をそそる一枚になる。',
+      '鶏もも肉は「そぎ切り」にして片栗粉をまんべんなく薄くまぶすのが衣の決め手。フライパンで片面をしっかり焼いてから裏返す——両面同時に動かすとジューシーさが逃げる。なすは電子レンジ加熱後にしっかり水気を切ること。特製たまねぎスープに塩分があるので醤油は控えめから調整し、仕上げに追いかけ醤油で輪郭を締めると完成度が上がる。',
+      '「揚げない南蛮」「レンジなす」「お酢が仕事しすぎ」はShortsで引っかかりやすいキーワード。ご飯がすすむ系おかずは特に夕食前18〜20時の投稿と相性が良い。サムネは「艶々の南蛮ダレ＋濃い色の背景」構図で視覚的インパクトを出す。タレに漬けて絡める瞬間の動画は再生数を上げやすい。',
+      'ダークトーンの深皿（黒・濃グレー）でタレの琥珀色を際立たせる。細ねぎと大葉の緑が映えのアクセント——最後に散らして鮮度感を出す。テーブル面はダークウォールナットか黒い鉄板トレイが◎。玉ねぎの白がタレに透けて見えると「漬け込んだ感」が伝わる盛り付けになる。',
+      '「なすをレンジから取り出す」→「タレを合わせる」→「鶏肉を片面焼き」→「タレに漬け込む」の4シーンが必須。特にタレに鶏肉とナスを投入する瞬間とかき混ぜながら絡める工程はリアルタイムで長めに収録。ご飯に乗せるシーンも俯瞰で押さえること。'
+    ],
+    tips: [
+      { icon:'🎯', text:'琥珀色の南蛮ダレ×黒い深皿が鉄板。ダークトーンの器でタレのツヤを際立たせる' },
+      { icon:'📐', text:'48〜50度の斜め俯瞰が最適。ダレの光沢と食材ボリュームが一枚に収まる' },
+      { icon:'💡', text:'左上からの自然光でダレのリフレクションを最大化。暗い背景で琥珀色を引き立てる' },
+      { icon:'✨', text:'タレに鶏肉とナスを漬け込む瞬間・全体をかき混ぜるシーンは必ず動画で収録' },
+      { icon:'🍳', text:'細ねぎと大葉を直前に散らして緑の差し色を。ごまを天盛りにすると映え度UP' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'揚げない調理法でカロリーを抑えながら南蛮の風味を実現。なすはレンジ加熱でかさが減り食物繊維をしっかり摂れる' },
+      { title:'美味しさのコツ', text:'特製たまねぎスープが南蛮ダレのコクと旨みの決め手。お酢と砂糖のバランスが甘酸っぱさを生み出し、ご飯が無限に進む' },
+      { title:'ひと足しポイント', text:'特製たまねぎスープをタレに混ぜることで市販のタレより自然な甘みと旨みが出る。大葉を添えると爽やかさがプラスされる' },
+      { title:'アレルギー注意', text:'小麦（醤油・片栗粉）・大豆（醤油）含む。グルテンフリー醤油と片栗粉代替粉で対応可能' }
+    ],
+    titles: [
+      'お米2合炊いて待機 お酢が仕事しすぎな鶏なす南蛮 できました',
+      '揚げないのに本格 甘酸っぱ鶏なす南蛮 できました',
+      'タレがご飯を溶かす 揚げない鶏とナスの南蛮 できました',
+      'レンジ3分のなすで 旨辛南蛮ダレ鶏 できました',
+      'あの酸っぱい香りがたまらない 鶏もも南蛮漬け できました',
+    ],
+    refVideos: [{ url:'https://youtu.be/dpEXHC8s43U?si=JmAI0tH0KwfyF4_4', title:'参考動画（YouTube）', sub:'youtube.com' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=鶏なす南蛮+ショート', title:'YouTube：鶏なす南蛮 Shorts' },{ url:'https://www.youtube.com/results?search_query=揚げない南蛮漬け+鶏もも+簡単', title:'YouTube：揚げない南蛮漬け 簡単' }]
+  },
+  {
+    id: 106,
+    name: '大葉茄子丼',
+    sub: 'じゅわっと旨辛タレが染み込む、大葉香るご飯泥棒丼',
+    by: 'くわ',
+    emoji: '🥗',
+    bg: '#0D1409',
+    tamachan: ['綾菜式減塩 万能だし粉 少々', '白胡麻 お好み量', '三十雑穀パックごはん 1パック'],
+    ingredients: ['なす 6本', '大葉 30枚', 'おろしニンニク 小さじ1', 'おろしショウガ 小さじ1', 'ゴマ油 大さじ2', '酒 100ml', 'みりん 50ml', 'めんつゆ（3〜4倍濃縮） 大さじ2', 'しょうゆ 大さじ2', '豆板醤 小さじ2', '砂糖 小さじ2', 'ナンプラー 大さじ1', '唐辛子 1本', '米油 適量'],
+    ingredientsAI: ['すりごま（香ばしさ・仕上げ映え）', '卵黄（濃厚さ・丼の映え）', '万能ねぎ（緑の差し色）'],
+    steps: [
+      '鍋にゴマ油・おろしニンニク・おろしショウガを入れて軽く炒め、酒・みりん・万能だし粉を加えて沸騰させる',
+      '火を止めてめんつゆ・しょうゆ・豆板醤・砂糖・ナンプラー・唐辛子を加え、一煮立ちさせてゴマ油を加えて混ぜ合わせ、保存容器に移す',
+      'なすはヘタを切り落として縦に薄切りにし、キッチンペーパーで水気を拭き取って米油を刷毛で全体に塗る',
+      'フライパンになすを並べ、中火で焼き色がつくまで焼く',
+      'なすに焼き色がついたら漬けダレに浸し、大葉を順番に挟みながら重ねて全体を漬け汁に浸す',
+      '三十雑穀パックごはんを盛った丼の上に乗せて完成'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese donburi bowl featuring thinly sliced grilled eggplant glistening with a deep amber-mahogany spicy tare sauce, layered with vibrant fresh shiso (ohba) leaves interspersed between the eggplant, served over fluffy steamed grain rice in a rustic deep ceramic donburi bowl with dark brown glaze. The eggplant pieces have beautiful char marks and are lacquered in a glossy sauce with visible sesame seeds scattered on top. Bowl placed on a dark walnut wood tray. Japanese lacquer chopsticks resting on the bowl rim. Scattered fresh shiso leaves on top as garnish. Camera positioned at 45-degree overhead angle to show the layered eggplant and sauce depth. Warm natural window light from upper-left creating amber highlights on the glossy sauce. Shallow depth of field with soft background blur. Japanese food magazine aesthetic. Cinematic warm amber color grading. No text. No watermark.',
+    proComments: [
+      '丼ものは45〜48度の斜め俯瞰で「ご飯の白×なすの艶々ソース×大葉の緑」のレイヤーをすべて見せるのがベスト。漬けたてのなすはソースが輝いているので、丼に乗せた直後10〜15秒以内を狙う。左上からの自然光でソースのリフレクションを引き出し、大葉の緑が際立つ角度を確認してから撮影に入ること。',
+      'タレの仕上がりは「一煮立ちしたらすぐ火を止める」が鉄則——煮詰めすぎると塩辛くなる。なすは米油をたっぷり刷毛塗りしてから焼くと焦げ目が均一につく。豆板醤の量で辛さを調整できるので、おひとり様向けには小さじ1から始めて好みで増やす。大葉はタレに浸してから挟むとしっかり味が絡む。',
+      '「大葉×なす×丼」は「ご飯泥棒」系のキーワードと非常に相性が良い。「無限やみつき」「漬けるだけ」「旨辛タレ」がShortsで伸びているワード。なす料理は夏前から伸び始めるトレンドなので時期的にも狙い目。サムネはなすのジューシーな断面と大葉の緑のコントラストで「食欲直撃」の構図を作ること。',
+      '深みのある焼き物の丼（ダークブラウン〜黒）でソースの琥珀色と大葉の緑を最大限引き立てる。盛り付けは大葉を扇状に広げてなすを乗せると「ハレ感」が出る。仕上げに白ごまをひとつかみ散らして粒感を出す。テーブルクロスは黒か深緑のリネンが◎。',
+      'タレを作る「グツグツ沸く工程」→「米油を刷毛でなすに塗る」→「フライパンで焼き色つける」→「タレに漬け込む」→「丼に盛り付ける」の5シーンが必須。特に漬けダレにジュッとなすを投入する瞬間と、大葉を挟み重ねていく過程は長めに収録。食べる直前の箸で持ち上げるシーンも視聴者の食欲を刺激できる。'
+    ],
+    tips: [
+      { icon:'🎯', text:'ダークブラウンの丼×琥珀色タレ×大葉の緑がベスト構図。深みのある器でコントラスト最大化' },
+      { icon:'📐', text:'45〜48度の斜め俯瞰でご飯・なす・大葉のレイヤーを一枚に収める' },
+      { icon:'💡', text:'左上からの自然光でタレのリフレクションを引き出す。大葉の緑が映える角度を優先' },
+      { icon:'✨', text:'なすをタレに漬け込む瞬間・大葉を挟み重ねる工程・箸で持ち上げるシーンは必ず収録' },
+      { icon:'🍳', text:'白ごまを直前に散らして粒感と仕上がり感をアップ。卵黄を乗せると「濃厚丼」感が増す' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'なすは低カロリーで食物繊維・ポリフェノール豊富。米油で焼くことで揚げずにヘルシーに。万能だし粉で減塩しながら旨みを底上げ' },
+      { title:'美味しさのコツ', text:'タレの複雑な旨みは豆板醤×ナンプラー×めんつゆの組み合わせから。大葉をたっぷり挟むことで食べるたびに香りが広がり箸が止まらなくなる' },
+      { title:'ひと足しポイント', text:'万能だし粉をタレに加えることで出汁の深みが加わる。三十雑穀パックごはんで栄養価アップ＋ご飯の旨みも増す' },
+      { title:'アレルギー注意', text:'小麦（めんつゆ・しょうゆ）・魚介（ナンプラー）・大豆（しょうゆ）含む。ナンプラー不使用でも成立するので体質に合わせて調整可能' }
+    ],
+    titles: [
+      'もうご飯泥棒確定 じゅわっと旨辛 大葉茄子丼 できました',
+      '無限に食べられる やみつき大葉なす丼 できました',
+      '漬けるだけなのに 旨辛タレが染み込む大葉茄子丼 できました',
+      '夏なすで作る 焼き大葉なすの旨辛漬け丼 できました',
+      '大葉の香りと旨辛タレ ご飯が溶ける茄子丼 できました',
+    ],
+    refVideos: [{ url:'https://youtu.be/LSYJwIYsETA?si=YPfs_D9chiJrgyEX', title:'参考動画（YouTube）', sub:'youtube.com' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=大葉茄子丼+ショート', title:'YouTube：大葉茄子丼 Shorts' },{ url:'https://www.youtube.com/results?search_query=旨辛なす+大葉+レシピ+簡単', title:'YouTube：旨辛なす 大葉 簡単' }]
   }
 ];
 
