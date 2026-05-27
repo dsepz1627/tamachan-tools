@@ -342,6 +342,58 @@ const POLLINATIONS_BASE = 'https://image.pollinations.ai/prompt';
    通常版では空。exportHTML()で生成したファイルには実際の画像データが入る */
 const EMBEDDED_IMAGES = {};
 
+/* ── GitHub画像共有 ── */
+const GITHUB_REPO     = 'dsepz1627/tamachan-tools';
+const GITHUB_IMG_PATH = 'ohisama-kitchen/images';
+const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/${GITHUB_IMG_PATH}`;
+
+function getGitHubPAT() { return localStorage.getItem('ohisama_github_pat') || ''; }
+function githubImgUrl(id) { return `${GITHUB_RAW_BASE}/recipe-${id}.jpg`; }
+
+async function uploadImageToGitHub(id, dataUrl) {
+  const pat = getGitHubPAT();
+  if (!pat) return false;
+  const path = `${GITHUB_IMG_PATH}/recipe-${id}.jpg`;
+  const base64Content = dataUrl.split(',')[1];
+  let sha;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+      headers: { Authorization: `token ${pat}`, Accept: 'application/vnd.github.v3+json' }
+    });
+    if (r.ok) sha = (await r.json()).sha;
+  } catch(e) {}
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${pat}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github.v3+json' },
+    body: JSON.stringify({ message: `Add photo: recipe ${id}`, content: base64Content, ...(sha ? { sha } : {}) })
+  });
+  return res.ok;
+}
+
+async function tryLoadGitHubImages() {
+  for (const r of RECIPES) {
+    if (getStoredImage(r.id)) continue;
+    const url = githubImgUrl(r.id);
+    try {
+      const res = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+      if (res.ok) saveImage(r.id, url);
+    } catch(e) {}
+  }
+}
+
+function setupGitHubPAT() {
+  const current = getGitHubPAT();
+  const val = prompt('GitHub Personal Access Token を入力してください\n（Contents: Read & Write 権限が必要）\n\n空欄で削除', current);
+  if (val === null) return;
+  if (val.trim()) {
+    localStorage.setItem('ohisama_github_pat', val.trim());
+    alert('✅ 設定完了。次回アップロードから全デバイスで共有されます。');
+  } else {
+    localStorage.removeItem('ohisama_github_pat');
+    alert('PATを削除しました。');
+  }
+}
+
 function saveImage(id, dataUrl) {
   try { localStorage.setItem(`ohisama_img_${id}`, dataUrl); } catch(e) {}
 }
@@ -365,7 +417,7 @@ function resizeAndUpload(id, file) {
   const reader = new FileReader();
   reader.onload = (e) => {
     const img = new Image();
-    img.onload = () => {
+    img.onload = async () => {
       const canvas = document.createElement('canvas');
       const maxW = 1024, maxH = 768;
       let w = img.naturalWidth, h = img.naturalHeight;
@@ -376,7 +428,26 @@ function resizeAndUpload(id, file) {
       }
       canvas.width = w; canvas.height = h;
       canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-      applyImage(id, canvas.toDataURL('image/jpeg', 0.82));
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      applyImage(id, dataUrl);
+
+      if (getGitHubPAT()) {
+        /* アップロード中インジケーター */
+        const area = document.getElementById(`ia-${id}`);
+        const badge = document.createElement('div');
+        badge.style.cssText = 'position:absolute;bottom:8px;right:10px;font-size:9px;color:#fff;background:rgba(0,0,0,.55);padding:3px 9px;letter-spacing:.06em;pointer-events:none;';
+        badge.textContent = '☁️ GitHubに保存中…';
+        area.appendChild(badge);
+
+        const ok = await uploadImageToGitHub(id, dataUrl);
+        if (ok) {
+          saveImage(id, githubImgUrl(id));
+          badge.textContent = '✅ 全デバイスで共有済み';
+        } else {
+          badge.textContent = '⚠️ 保存失敗（このデバイスのみ）';
+        }
+        setTimeout(() => badge.remove(), 3000);
+      }
     };
     img.src = e.target.result;
   };
@@ -839,6 +910,7 @@ function listHTML(tab) {
     <div class="header">
       <div class="header-inner">
         <div><div class="logo-title">撮影準備シート</div><div class="logo-sub">おひとり様キッチン</div></div>
+        <button onclick="setupGitHubPAT()" style="font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;letter-spacing:.06em;font-family:'Noto Sans JP',sans-serif;padding:4px 0;">⚙️ 写真共有設定</button>
       </div>
     </div>
     <div class="list-top">
@@ -1029,6 +1101,7 @@ function toggleP(id) {
 }
 
 nav('list');
+tryLoadGitHubImages();
 </script>
 
 
