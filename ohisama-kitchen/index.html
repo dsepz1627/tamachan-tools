@@ -382,7 +382,7 @@ async function tryLoadGitHubImages() {
     const url = githubImgUrl(r.id);
     try {
       const res = await fetch(url, { method: 'HEAD', cache: 'no-store' });
-      if (res.ok) saveImage(r.id, url);
+      if (res.ok) applyImage(r.id, url);
     } catch(e) {}
   }
 }
@@ -410,11 +410,30 @@ function getStoredImage(id) {
 function applyImage(id, src) {
   const area = document.getElementById(`ia-${id}`);
   if (area) {
+    const numEl = area.querySelector('.detail-hero-num');
     area.innerHTML = `<img src="${src}" alt="盛り付けイメージ">`;
+    if (numEl) area.appendChild(numEl);
+    /* 削除ボタンを action bar に追加 */
+    const bar = document.querySelector('.img-action-bar');
+    if (bar && !bar.querySelector('.btn-upload')) {
+      const delBtn = document.createElement('button');
+      delBtn.className = 'btn-upload';
+      delBtn.textContent = '削除';
+      delBtn.onclick = () => clearPhoto(id);
+      bar.appendChild(delBtn);
+    }
   }
   saveImage(id, src);
-  const listImg = document.querySelector(`.recipe-card[data-id="${id}"] .card-img-area`);
-  if (listImg) listImg.innerHTML = `<img src="${src}" alt="">`;
+  const listCard = document.querySelector(`.recipe-card[data-id="${id}"] .card-img-area`);
+  if (listCard) {
+    const numEl = listCard.querySelector('.card-num');
+    const existing = listCard.querySelector('img, .card-img-emoji');
+    const img = document.createElement('img');
+    img.src = src; img.alt = '';
+    if (existing) existing.replaceWith(img);
+    else if (numEl) listCard.insertBefore(img, numEl);
+    else listCard.appendChild(img);
+  }
 }
 
 /* スマホ写真は数MBになることが多くlocalStorageの上限を超えるため
