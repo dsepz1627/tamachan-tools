@@ -692,6 +692,7 @@ const RECIPES = [
   },
   {
     id: 105,
+    past: true,
     name: '鶏なす南蛮',
     sub: '揚げずにできる、南蛮ダレがじゅわっと染み込む絶品おかず',
     by: 'Jaws',
@@ -740,6 +741,7 @@ const RECIPES = [
   },
   {
     id: 106,
+    past: true,
     name: '大葉茄子丼',
     sub: 'じゅわっと旨辛タレが染み込む、大葉香るご飯泥棒丼',
     by: 'くわ',
@@ -786,6 +788,481 @@ const RECIPES = [
     ],
     refVideos: [{ url:'https://youtu.be/LSYJwIYsETA?si=YPfs_D9chiJrgyEX', title:'参考動画（YouTube）', sub:'youtube.com' }],
     autoVideos: [{ url:'https://www.youtube.com/results?search_query=大葉茄子丼+ショート', title:'YouTube：大葉茄子丼 Shorts' },{ url:'https://www.youtube.com/results?search_query=旨辛なす+大葉+レシピ+簡単', title:'YouTube：旨辛なす 大葉 簡単' }]
+  },
+  {
+    id: 107,
+    name: 'もずくでさっぱりそうめん',
+    sub: 'ネバネバ梅×出汁スープで仕上げる夏そうめん',
+    by: 'くわ',
+    emoji: '🍜',
+    bg: '#0A1208',
+    tamachan: ['三十雑穀出汁スープ 大さじ2'],
+    ingredients: ['おくら 3本','もずく酢 2パック','梅干し 2個','大葉 2枚','青ネギ 適量','めんつゆ 大さじ1','ごま油 適量','そうめん 2束','氷 適量'],
+    ingredientsAI: ['すりごま（香ばしさ・仕上げ映え）','みょうが（夏らしい彩りと香り）','糸唐辛子（赤の差し色）'],
+    steps: [
+      'オクラは板ずりして600Wで1分レンチンし、1cm幅に切る',
+      '奴ネギ・梅干し・大葉を刻む',
+      'ボウルにもずく酢・めんつゆ・ごま油・三十雑穀出汁スープ・②を入れて混ぜる',
+      'そうめん2束を表記通りに茹でる',
+      'そうめんを氷水で冷やしもみ洗いする',
+      '③と⑤を合わせて完成'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese chilled somen noodles with mozuku seaweed: delicate white somen strands arranged in a loose nest, glistening with a clear dashi tare sauce, topped with vibrant green okra rounds, sticky brown mozuku seaweed strands, finely chopped green onions, torn shiso leaves, and a single plum (umeboshi) placed prominently on top. Served in a wide shallow pale celadon green Japanese ceramic bowl. Bowl placed on a pale bleached wood surface. Bamboo chopsticks resting diagonally beside. Ice cubes visible along the rim. Camera at 50-degree overhead angle. Soft natural window light from upper-left. Shallow depth of field. Japanese food magazine aesthetic. Cool fresh summer tones. No text. No watermark.',
+    proComments: [
+      'そうめんの白×オクラの緑×梅の赤がフレッシュな三色コントラスト。50度の斜め俯瞰でもずくのネバネバ感とそうめんのツヤを同時に見せる。氷水で締めた直後のキリッとした表情を狙い、スピーディに撮影を済ませること。涼しげなセラドングリーンの器が夏感を高める。',
+      'そうめんはもみ洗いをしっかり行うことでぬめりが取れ、もずくとの絡みが良くなる。オクラは板ずりで産毛を取ることで口当たりが改善される。三十雑穀出汁スープは塩分があるのでめんつゆは控えめから調整する。氷水でしっかり冷やすと食感が格段に上がる。',
+      '「ネバネバそうめん」「もずく活用」は夏の定番Shorts検索ワード。6〜8月は特にそうめん動画が伸びやすいトレンドがある。梅×ごま油×出汁の和の組み合わせは「さっぱりなのに旨い」系コピーが効く。サムネはオクラと梅が目立つ鮮やかな配色を意識。',
+      '白か淡いグリーンの浅めの丸皿を選択。もずくが黒くなりすぎないよう、オクラや梅で彩りを補う。仕上げにすりごまをひとつまみ散らすと映え度UP。テーブルはブリーチウッドか白大理石で清涼感を演出。',
+      'そうめんを氷水で締めるシーン・もずくをスプーンで乗せる瞬間・梅干しを箸でほぐす工程を動画で収録。食べるシーンの「すするアップ」は夏そうめんの定番カットとして必須。全体俯瞰の完成シーンも忘れずに。'
+    ],
+    tips: [
+      { icon:'🎯', text:'白いそうめん×緑のオクラ×梅の赤が映える。淡いグリーンの器でさっぱり感を演出' },
+      { icon:'📐', text:'50度の斜め俯瞰でもずくのテクスチャとそうめんのツヤを同時に見せる' },
+      { icon:'💡', text:'自然光で涼しげな明るさを確保。暖色すぎる照明は避けて清涼感を優先' },
+      { icon:'✨', text:'氷水でそうめんを締めるシーン・梅をほぐす瞬間は必ず動画で収録' },
+      { icon:'🍳', text:'みょうがや糸唐辛子を直前に散らすと夏らしい彩りがアップ' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'もずくは食物繊維・フコイダン豊富で低カロリー。オクラのネバネバ成分ムチンは胃腸の保護に働く。夏の暑い日でも食べやすいヘルシーそうめん' },
+      { title:'美味しさのコツ', text:'三十雑穀出汁スープが和の旨みをそうめん全体に広げる決め手。もずく酢の酸味とごま油の香りがさっぱりとコクを両立させる' },
+      { title:'ひと足しポイント', text:'三十雑穀出汁スープを加えることで鶏ガラ素に比べて自然な旨みと穀物の深みが出る。みょうがを加えると夏の清涼感が増す' },
+      { title:'アレルギー注意', text:'小麦（そうめん・めんつゆ）・大豆（めんつゆ）含む。グルテンフリーはビーフンや米粉麺で代替可能' }
+    ],
+    titles: [
+      'ネバネバなのに さっぱり梅そうめん できました',
+      '夏の食欲ゼロでも もずくとオクラのさっぱりそうめん できました',
+      '氷水で締めた 梅×もずくのひんやりそうめん できました',
+      '出汁スープひと足しで 旨みが増すもずくそうめん できました',
+      '5分でできる 夏のネバネバそうめん できました'
+    ],
+    refVideos: [{ url:'https://www.instagram.com/reel/DYWUP0vSBAu/', title:'参考リール（Instagram）', sub:'instagram.com' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=もずく+そうめん+ネバネバ+ショート', title:'YouTube：もずくそうめん Shorts' },{ url:'https://www.youtube.com/results?search_query=梅+そうめん+夏+さっぱり+簡単', title:'YouTube：梅そうめん 夏 さっぱり' }]
+  },
+  {
+    id: 108,
+    name: 'ポップコーンチキン',
+    sub: 'たまねぎスープで下味をつけるサクサクおやつチキン',
+    by: 'くわ',
+    emoji: '🍗',
+    bg: '#1A1005',
+    tamachan: ['特製たまねぎスープ 適量'],
+    ingredients: ['鶏むね肉 300g','料理酒 適量','マヨネーズ 適量','醤油 適量','片栗粉 適量','ケチャップ 適量'],
+    ingredientsAI: ['パセリ（緑の差し色・香り）','レモン（さっぱり感）','粗挽き黒胡椒（引き締め）'],
+    steps: [
+      '鶏むね肉を小さめの角切りにする',
+      '酒・マヨネーズ・醤油・たまねぎスープをもみ込んで10分置く',
+      '片栗粉をたっぷり入れてまぶす',
+      '油をひいたフライパンで全面をコロコロと焼き、お肉に火が通れば完成'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese popcorn chicken: dozens of small golden-brown bite-sized chicken nuggets with a perfectly crispy craggy starch coating that catches the light. Each piece uniformly golden with slightly darker crispy edges. Served in a shallow dark slate ceramic bowl or on a natural wood cutting board lined with parchment. A small white ceramic dipping dish of ketchup placed to the side. Fresh flat-leaf parsley scattered around. Camera at 45-degree angle. Warm studio light from upper-left creating highlights on the crispy coating. Shallow depth of field with soft background. Japanese food magazine aesthetic. Warm golden tones. No text. No watermark.',
+    proComments: [
+      '黄金色のカリカリ衣が主役。45度の斜め俯瞰でコロコロとした粒感と衣のざくざくテクスチャを最大限表現する。木製トレイかペーパー敷きのプレートに山盛りで盛り付けると「食べたい！」感が増す。ケチャップを小皿で添えると色のバランスが整う。',
+      '下味の10分置きが重要——短すぎると味が薄く、長すぎると水分が出て衣がつきにくい。片栗粉はたっぷりまぶすことでカリカリ食感が出る。コロコロ転がしながら焼くことで全面に均一な焼き色をつける。たまねぎスープに塩分があるので醤油は控えめに調整。',
+      '「ポップコーンチキン」はShortsで通年安定して伸びるジャンル。夏休み・子ども向けの訴求で「家で作れる」「子どもが喜ぶ」キーワードが刺さりやすい。揚げずにフライパンだけというフックが明確な差別化になる。サムネは黄金色のチキンを山盛りにした俯瞰構図が最強。',
+      'ダークスレートの深皿か木製カッティングボード＋パーチメントペーパーが◎。パセリの緑とケチャップの赤を差し色に使う。高さを出して盛り付けるとボリューム感が伝わる。',
+      'フライパンでコロコロ焼くシーン・片栗粉をまぶすシーン・完成後に山盛りになったチキンを箸でつまむシーンが必須収録ポイント。「衣がカリカリになる瞬間」は音と映像のコンビで視聴者を引き込む。'
+    ],
+    tips: [
+      { icon:'🎯', text:'黄金色の衣×ケチャップの赤が映える。ダークな器か木製トレイで色を引き立てる' },
+      { icon:'📐', text:'45度の斜め俯瞰で衣のカリカリ感とコロコロ粒感を表現' },
+      { icon:'💡', text:'サイドからの暖かい光で衣のテクスチャに立体感を出す' },
+      { icon:'✨', text:'フライパンでコロコロ焼くシーン・片栗粉まぶしシーンを動画で収録' },
+      { icon:'🍳', text:'ケチャップを小皿で添えて色のアクセントに。パセリを散らすと映え度UP' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'鶏むね肉は高タンパク低脂質。揚げずにフライパンで焼くことでカロリーを大幅に抑えながらカリカリ食感を実現' },
+      { title:'美味しさのコツ', text:'たまねぎスープが下味のコクと旨みを底上げ。マヨネーズの油分でジューシーさをキープしながら片栗粉がサクサク衣になる' },
+      { title:'ひと足しポイント', text:'特製たまねぎスープで市販コンソメより自然な甘みと旨みをプラス。黒胡椒を仕上げにふると大人味に変わる' },
+      { title:'アレルギー注意', text:'小麦（醤油）・卵（マヨネーズ）・大豆（醤油）含む。グルテンフリー醤油とマヨネーズで対応可能' }
+    ],
+    titles: [
+      '子供が喜ぶ 揚げないポップコーンチキン できました',
+      '片栗粉たっぷりで サクサクポップコーンチキン できました',
+      'フライパンだけで 本格ポップコーンチキン できました',
+      'たまねぎスープが旨みの秘密 ポップコーンチキン できました',
+      '無限に食べられる カリカリポップコーンチキン できました'
+    ],
+    refVideos: [{ url:'https://www.youtube.com/shorts/gr556NVfy1Y', title:'参考動画（YouTube）', sub:'youtube.com' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=ポップコーンチキン+揚げない+フライパン+ショート', title:'YouTube：ポップコーンチキン フライパン' },{ url:'https://www.youtube.com/results?search_query=鶏むね肉+カリカリ+フライパン+簡単', title:'YouTube：鶏むね肉 カリカリ 簡単' }]
+  },
+  {
+    id: 109,
+    name: '麦茶ゼリー',
+    sub: '甜菜糖で甘く固めた、香ばしさとやさしさのゼリー',
+    by: 'くわ',
+    emoji: '🍵',
+    bg: '#0D0A06',
+    tamachan: ['九州産麦茶 1パック'],
+    ingredients: ['甜菜糖 大さじ3','ゼラチン 5g','べっぴんはとむぎ 適量','きなこ 適量'],
+    ingredientsAI: ['黒みつ（映え×甘み強化）','あんこ（和の雰囲気UP）','ミント（清涼感と緑のアクセント）'],
+    steps: [
+      'タマチャンの麦茶を濃いめに煮出す',
+      '麦茶1と1/2カップ（約300ml）に甜菜糖大さじ3を加えて溶かし、ゼラチン5gを振り入れてよく混ぜる',
+      '型や容器に注ぎ、冷蔵庫で2〜3時間冷やし固める',
+      '器に取り出し、お好みできなこ・べっぴんはとむぎをふって完成'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese barley tea jelly (mugicha jelly): gently trembling translucent amber-brown jelly with a warm brown hue from roasted barley tea. The surface has a beautiful glossy wet sheen. Dusted with fine golden kinako (roasted soybean flour). A few pearls of hatomugi placed on top. A drizzle of kuromitsu pooling around the base. Served in a small round white or pale celadon Japanese ceramic dish. Dish placed on a dark slate surface. Bamboo spoon resting beside. Camera at 42-degree angle. Soft natural diffused window light. Shallow depth of field. Japanese wagashi-inspired aesthetic. Warm amber tones. No text. No watermark.',
+    proComments: [
+      'ゼリーはトップから光が透けると琥珀色が美しく見える。42〜45度の斜め俯瞰できなこのマットな質感とゼリーのツヤが対比になる構図が鉄板。黒みつをかける瞬間は液体が流れる演出として動画映えする。白or薄いグリーンの小皿に盛ることで「品のある夏デザート」感が出る。',
+      'ゼラチンは必ず50℃以上のお茶に溶かすこと——熱すぎると固まりにくいので70℃前後が理想。甜菜糖はてんさい由来の柔らかい甘みで麦茶の香ばしさを邪魔しない。冷やし固める時間は最低2時間、できれば一晩がベスト。型から出す際は器を温湯に一瞬つけると綺麗に外れる。',
+      '「麦茶ゼリー」は夏デザート系Shortsで安定した検索ニーズがある。「甜菜糖で罪悪感ゼロ」「はとむぎトッピング」というユニークなフックで差別化できる。「材料3つ」「混ぜて固めるだけ」の超簡単系コピーが伸びやすい。サムネはゼリーをスプーンで崩す瞬間が最も引きが強い。',
+      '白か薄い和食器に盛り付け。きなこを茶こしで均一にふって表面をマット仕上げに。黒みつをクルッとひと廻しかけることで光沢のコントラストが生まれる。はとむぎを数粒天盛りにして素材感を強調。',
+      '「ゼラチンを溶かす」→「冷蔵庫に入れる」→「固まったゼリーを型から出す」→「きなこをふる」→「スプーンで崩す」の5シーンが必須。スプーンで崩してぷるぷる揺れるシーンは最も再生数が伸びるので長めに収録。黒みつを垂らすシーンも必ず入れること。'
+    ],
+    tips: [
+      { icon:'🎯', text:'琥珀色ゼリー×きなこのマット質感が和デザートの映え。白か薄緑の小器が最適' },
+      { icon:'📐', text:'42〜45度の斜め俯瞰でゼリーのツヤときなこのコントラストを表現' },
+      { icon:'💡', text:'上から透過光を当てると麦茶ゼリーの琥珀色が美しく輝く' },
+      { icon:'✨', text:'黒みつを垂らす瞬間・スプーンで崩してぷるぷる揺れるシーンは必ず動画で収録' },
+      { icon:'🍳', text:'はとむぎを天盛りにして食感と素材感をアピール。ミントを添えると夏らしさUP' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'麦茶はノンカフェイン・ノンカロリー。甜菜糖は精製度が低く血糖値の上昇が穏やか。はとむぎはむくみ解消・美肌効果で知られる栄養素を含む' },
+      { title:'美味しさのコツ', text:'麦茶を濃いめに煮出すことで香ばしさが際立ち、ゼリーにした後も風味が逃げない。甜菜糖の柔らかい甘みが麦茶の苦みを引き立てる' },
+      { title:'ひと足しポイント', text:'タマチャンの九州産麦茶の香ばしさがゼリーの味の決め手。べっぴんはとむぎをトッピングするとプチプチ食感のアクセントになる' },
+      { title:'アレルギー注意', text:'きなこ（大豆）含む。大豆アレルギーの方はきなこを省いても美味しく食べられる' }
+    ],
+    titles: [
+      '香ばしさがたまらない 麦茶ゼリー できました',
+      '混ぜて固めるだけ ぷるぷる麦茶ゼリー できました',
+      'きなこをふって和デザート 甜菜糖の麦茶ゼリー できました',
+      'ノンカフェイン夏デザート 香ばし麦茶ゼリー できました',
+      'はとむぎトッピングで栄養満点 麦茶ゼリー できました'
+    ],
+    refVideos: [{ url:'https://enuchi.jp/7200/how-to-make-barley-tea-jelly', title:'参考レシピ（enuchi）', sub:'enuchi.jp' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=麦茶ゼリー+簡単+ショート', title:'YouTube：麦茶ゼリー 簡単 Shorts' },{ url:'https://www.youtube.com/results?search_query=麦茶+ゼリー+夏デザート+ゼラチン', title:'YouTube：麦茶ゼリー 夏デザート' }]
+  },
+  {
+    id: 110,
+    name: 'モロコッチ炊き込みご飯',
+    sub: '万能だし粉で炊き込む、とうもろこしの旨みが広がるご飯',
+    by: 'くわ',
+    emoji: '🌽',
+    bg: '#131005',
+    tamachan: ['モロコッチ 1袋','綾菜式減塩 万能だし粉 大さじ2'],
+    ingredients: ['白米 1.5合','水 320ml','酒 大さじ1','鶏むね肉 40g','塩胡椒 適量'],
+    ingredientsAI: ['万能ねぎ（緑の差し色・仕上げ）','黒胡椒（引き締め）','バター（コクと香り追加）'],
+    steps: [
+      '白米1.5合を研ぎ、炊飯器に入れる',
+      '水320mlに万能だし粉大さじ2を溶かして炊飯器に加え、酒大さじ1を入れる',
+      '鶏むね肉を小さめに切って塩胡椒し、モロコッチと一緒に炊飯器に乗せる',
+      '通常モードで炊飯して完成。食べる時にネギを散らしても◎'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese takikomi gohan (mixed rice): fluffy steamed white rice infused with the golden sweetness of freeze-dried sweet corn (morokocchi), with visible golden corn kernels and tender small chicken pieces throughout. The rice has a beautiful golden-amber color from the dashi seasoning. Light steam wisps rising. Served in a rustic matte dark brown Japanese donburi bowl. Bowl placed on a natural woven bamboo mat. Japanese lacquer chopsticks resting beside. Fresh thin-sliced green onions scattered on top. Camera at 45-degree angle. Warm natural window light from upper-left. Shallow depth of field. Japanese home cooking aesthetic. Warm golden tones. No text. No watermark.',
+    proComments: [
+      '炊き込みご飯は湯気が立ち上っている30秒以内が最高の撮影タイミング。45〜48度の斜め俯瞰でとうもろこしの粒感とふっくらご飯の両方を見せる。深みのある焼き物丼鉢に盛り付けると「おうちご飯感」が高まる。万能ねぎの緑を最後に散らして彩りを整えてから撮影すること。',
+      'モロコッチは水に溶かす必要はなく、炊飯器にそのまま入れるだけでOK。万能だし粉に塩分があるので水分量を確認してから調整する。鶏むね肉は薄切りにすることで炊飯中に均一に火が入る。炊きあがり後に5分蒸らすと米に水分が行き渡り、ふっくら仕上がる。',
+      '「炊き込みご飯」系は年中安定しているが、とうもろこし系は6〜8月にピークがある。「モロコッチ」というユニーク商品名がそのままフックになる。「炊飯器に入れるだけ」「ほったらかし」系コピーが刺さりやすい。サムネは炊きたてのご飯と蒸気を活かした温かみある構図で。',
+      'ダークブラウンの丼か木製おひつが映えの器候補。炊きたてのご飯をよそう瞬間に自然な湯気が出るので、その演出を最大化する。万能ねぎを直前に散らして鮮度感を出す。テーブルは竹製ランチョンマットか木目で和の雰囲気を強調。',
+      '炊飯器を開けるシーン（湯気×黄金色ご飯）は必ず収録。しゃもじで混ぜる工程・丼によそうシーン・最初のひと口を食べるシーンの3点が必須。「材料を入れてボタンを押すだけ」の工程動画は時短感の訴求に直結する。'
+    ],
+    tips: [
+      { icon:'🎯', text:'とうもろこしの黄金色×茶色の丼がベスト。深みのある器でご飯の光沢を引き立てる' },
+      { icon:'📐', text:'45〜48度の斜め俯瞰でコーンの粒感とご飯のふっくら感を同時に表現' },
+      { icon:'💡', text:'炊きたての湯気が出るうちに素早く撮影。暖かみのある自然光で家庭感を演出' },
+      { icon:'✨', text:'炊飯器を開けるシーン（湯気×黄金色）・しゃもじで混ぜる工程は必ず収録' },
+      { icon:'🍳', text:'万能ねぎを直前に散らして緑の差し色を。バターひとかけを乗せると映え度UP' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'モロコッチはとうもろこしの栄養素（食物繊維・ビタミンB群）がそのまま。万能だし粉で減塩しながら旨みを確保。鶏むね肉でタンパク質をプラス' },
+      { title:'美味しさのコツ', text:'万能だし粉のコクとモロコッチの自然な甘みが炊き込みご飯に深みを出す。炊き上がり後の5分蒸らしがふっくら仕上がりの鍵' },
+      { title:'ひと足しポイント', text:'モロコッチと万能だし粉のダブル使いでシンプルな材料から複雑な旨みが生まれる。仕上げにバターをひとかけ乗せるとリッチな味わいにアレンジできる' },
+      { title:'アレルギー注意', text:'小麦・大豆含む場合あり。アレルゲン情報は各商品のラベルを確認すること' }
+    ],
+    titles: [
+      '季節を問わずに楽しめる モロコッチ炊き込みご飯 できました',
+      '炊飯器にぽいっと入れるだけ とうもろこし炊き込みご飯 できました',
+      'だし粉の旨みが染み込む モロコッチごはん できました',
+      '蓋を開けた瞬間の香りが最高 とうもろこし炊き込みご飯 できました',
+      '鶏むねとモロコッチの旨みご飯 できました'
+    ],
+    refVideos: [{ url:'https://www.sirogohan.com/recipe/morokosigohan/', title:'参考レシピ（白ごはん.com）', sub:'sirogohan.com' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=とうもろこし+炊き込みご飯+炊飯器+ショート', title:'YouTube：とうもろこし炊き込みご飯 Shorts' },{ url:'https://www.youtube.com/results?search_query=モロコッチ+レシピ+タマチャン', title:'YouTube：モロコッチ レシピ' }]
+  },
+  {
+    id: 111,
+    name: '三十雑穀スープガスパチョ',
+    sub: '夏野菜をまるごと 簡単冷製トマトスープ',
+    by: 'くわ',
+    emoji: '🍅',
+    bg: '#1A0A06',
+    tamachan: ['三十雑穀トマトスープ 大さじ2'],
+    ingredients: ['水 400ml','カラーピーマン 1/2個','ズッキーニ 1/2本','玉ねぎ 1/6個','にんにく 1/2片','レモン汁 小さじ2','塩 適量','こしょう 適量','オリーブオイル 適量'],
+    ingredientsAI: ['バジル（イタリアン感と緑の映え）','赤パプリカのみじん切り（色鮮やかな彩り）','クルトン（食感と映え）'],
+    steps: [
+      '玉ねぎはみじん切りに、カラーピーマンとズッキーニは小さめの角切りにする。にんにくはすりおろす',
+      'ボウルに①を入れ、三十雑穀トマトスープを水400mlに溶いたものとレモン汁を加えてよく混ぜ合わせる',
+      '塩・こしょうで味を調え、冷蔵室で20分ほど冷やす',
+      '器に盛り、オリーブオイルをまわしかける'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Spanish-Japanese fusion gazpacho cold soup: a vibrant deep red-orange cold tomato soup with a velvety smooth surface, swirled with a generous drizzle of golden extra virgin olive oil. Tiny colorful diced vegetables (yellow bell pepper, green zucchini) floating on the surface. Fresh green basil leaves placed elegantly on top. A few golden croutons scattered around. Served in a wide shallow white matte ceramic soup plate with a broad rim. Plate on a white linen tablecloth. A silver spoon resting beside. Camera at 38-degree low overhead angle. Cool diffused natural window light. Shallow depth of field. Vibrant red and green tones. No text. No watermark.',
+    proComments: [
+      '赤×緑×黄のカラフルな夏野菜が映える。38〜40度の浅い俯瞰でオリーブオイルのリング模様とスープ表面のテクスチャを最大限見せる。白い浅いスープ皿でコントラストを強調。盛り付け直前にオリーブオイルを一筋かけ、バジルをふわっと乗せる瞬間を動画で収めること。',
+      'ガスパチョはすべて生野菜で作るのが本来だが、三十雑穀トマトスープを使うことで大幅に時短できる。冷やし時間は最低20分だが、1時間以上冷やすほど野菜の旨みがスープに溶け出しておいしくなる。塩分はスープに含まれるので、追い塩は味見をしながら慎重に。',
+      '「冷製スープ」「ガスパチョ」は夏に急上昇するSearch傾向。三十雑穀トマトスープで「混ぜるだけ」の超時短版ガスパチョという差別化ポイントが明確。「材料切って混ぜるだけ」「火を使わない夏レシピ」がバズりやすいキーワード。サムネは赤いスープに緑バジルのコントラスト一択。',
+      '白い浅いリムプレートにスープを注いでオリーブオイルをかけ回し、バジルを天盛りにする。クルトンを数個散らすと食感と色の両方が改善される。テーブルは白リネンか大理石で地中海感を演出。スープはぬるくなると台無しなので撮影前に器も冷蔵庫で冷やす。',
+      '野菜を切るシーン・ボウルでスープを混ぜ合わせるシーン・冷蔵庫から取り出す瞬間・オリーブオイルをかけ回すシーンの4点が必須。スプーンで飲む1口目のシーンも「さっぱり感」を伝えるのに有効。'
+    ],
+    tips: [
+      { icon:'🎯', text:'鮮やかな赤×緑×黄のコントラストが命。白いリムプレートでスープ色を際立たせる' },
+      { icon:'📐', text:'38〜40度の浅い俯瞰でオリーブオイルの模様とスープ表面を美しく見せる' },
+      { icon:'💡', text:'クールな自然光でさっぱり感を演出。暖色すぎる照明はスープの新鮮さを損なう' },
+      { icon:'✨', text:'オリーブオイルをかけ回す瞬間・バジルを乗せるシーンは必ず動画で収録' },
+      { icon:'🍳', text:'クルトンを最後に散らして食感と映えのアクセントに。スープを冷えた器で提供' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'加熱しない調理法で野菜のビタミンCを最大限保持。カラーピーマンはビタミンCが豊富。三十雑穀トマトスープでリコピンを手軽に摂れる低カロリー夏スープ' },
+      { title:'美味しさのコツ', text:'三十雑穀トマトスープの旨みと穀物の深みがベースになり、シンプルな材料でも本格的な味わいに。冷やし時間が長いほど野菜の旨みがスープに溶け込む' },
+      { title:'ひと足しポイント', text:'三十雑穀トマトスープがベースになることでブレンダーなし・煮込みなしでも本格ガスパチョが完成。仕上げのオリーブオイルが香りとコクをプラス' },
+      { title:'アレルギー注意', text:'原材料によって小麦・大豆含む場合あり。三十雑穀トマトスープのアレルゲン表示を確認すること' }
+    ],
+    titles: [
+      '夏野菜を一杯のスープに 簡単冷製トマトスープ できました',
+      '火を使わない 三十雑穀ガスパチョ できました',
+      '混ぜて冷やすだけ 夏野菜の冷製スープ できました',
+      'タマスープで作る 本格冷たいガスパチョ できました',
+      '暑い日に飲み干す さっぱりトマト冷製スープ できました'
+    ],
+    refVideos: [{ url:'https://daidokolog.pal-system.co.jp/recipe/10129', title:'参考レシピ（大地を守る会）', sub:'daidokolog.pal-system.co.jp' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=ガスパチョ+簡単+夏+ショート', title:'YouTube：ガスパチョ 簡単 夏 Shorts' },{ url:'https://www.youtube.com/results?search_query=冷製スープ+夏野菜+トマト+レシピ', title:'YouTube：冷製スープ 夏野菜' }]
+  },
+  {
+    id: 112,
+    name: '茄子とアボカド、トマトのジンジャーマリネ',
+    sub: 'みらいのしょうがのピリ辛がさっぱりを引き立てる夏マリネ',
+    by: 'Jaws',
+    emoji: '🥑',
+    bg: '#0A1408',
+    tamachan: ['みらいのしょうが 大さじ1'],
+    ingredients: ['茄子 1本','アボカド 1個','トマト 1個','オリーブオイル 適量','ポン酢 適量','ブラックペッパー 適量'],
+    ingredientsAI: ['イタリアンパセリ（緑の差し色・香り）','レモン輪切り（映え×さっぱり感）','赤玉ねぎスライス（色と食感のアクセント）'],
+    steps: [
+      '茄子を適当に切り、オリーブオイルであえて耐熱皿に入れ、600Wレンジで3分加熱する',
+      'みらいのしょうが大さじ1とポン酢を合わせてマリネ液を作る',
+      'アボカドとトマトを食べやすい大きさに切る',
+      'レンジしたナス・アボカド・トマトをマリネ液と合わせてよく混ぜる',
+      'お好みでブラックペッパーやイタリアンパセリをかけて完成'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese ginger marinade salad: tender roasted eggplant chunks with a slightly collapsed smoky texture, creamy ripe avocado cubes with naturally golden-green hue, and vibrant red tomato wedges, all glistening with a translucent amber ponzu and ginger dressing. Arranged in a wide shallow matte dark slate ceramic bowl. Torn fresh flat-leaf parsley and thin red onion slices scattered throughout. Drizzle of olive oil catching the light. Camera at 50-degree overhead angle. Natural soft window light from upper-left. Shallow depth of field. Warm summer Japanese food aesthetic. Green, red, and amber tones. No text. No watermark.',
+    proComments: [
+      'アボカドの黄緑×トマトの赤×ナスの紫のトリコロールが夏マリネの最大の武器。50度の斜め俯瞰で全ての食材が均等に見える構図を作る。しょうがの黄色がマリネ液に浮かんで見えると素材感が伝わる。スレートかダークセラミックの浅い皿でコントラストを最大化。',
+      'ナスはレンジ後に水気をしっかり拭き取ることでマリネ液が薄まらない。アボカドは切ったらすぐポン酢と合わせて変色を防ぐ。みらいのしょうがはペースト状でドレッシングに均一に分散する。食べる直前にあえると食感が保たれる。',
+      '「ナスとアボカドのマリネ」は夏の副菜系で安定したニーズがある。「しょうがポン酢」という和洋折衷のフックが明確な差別化になる。「レンジ3分」「火を使わない」「暑い夏の副菜」系コピーが刺さりやすい。サムネはアボカドの黄緑が目立つ引きの強い構図を選ぶ。',
+      'ダークスレートか黒マット皿でアボカドの黄緑とトマトの赤を際立たせる。イタリアンパセリとレモンを添えると地中海感が増す。盛り付けは無造作に混ぜたナチュラルスタイルが「簡単映え」感を演出。',
+      'ナスをレンジから出す瞬間・マリネ液を全体に回しかけるシーン・全体をざっくり混ぜる工程の3点が必須。食べた瞬間の「さっぱり感」を視聴者に伝えるシーンも効果的。'
+    ],
+    tips: [
+      { icon:'🎯', text:'アボカドの黄緑×トマトの赤×ナスの紫がトリコロール。ダークな皿でコントラスト最大化' },
+      { icon:'📐', text:'50度の斜め俯瞰で全食材が見えるバランスの良い構図を確保' },
+      { icon:'💡', text:'柔らかい自然光で食材の鮮やかな色を引き出す。強すぎる照明は色飛びに注意' },
+      { icon:'✨', text:'マリネ液をかけ回す瞬間・全体を混ぜるシーンは必ず動画で収録' },
+      { icon:'🍳', text:'イタリアンパセリとレモンを添えると夏らしい爽やかさが増す' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'アボカドは良質な不飽和脂肪酸・ビタミンE豊富。ナスは低カロリーで抗酸化ポリフェノール含む。しょうがの辛み成分ジンゲロールは体の巡りを促進' },
+      { title:'美味しさのコツ', text:'みらいのしょうがのピリ辛とポン酢のさっぱり酸味が組み合わさり、アボカドのコクとナスの旨みを引き立てる。全体を食べる直前に和えることで食感と鮮度が保たれる' },
+      { title:'ひと足しポイント', text:'みらいのしょうがを加えることで市販ドレッシングにはない生姜の辛みと風味が加わる。ブラックペッパーを粗挽きで多めにかけると風味が引き立つ' },
+      { title:'アレルギー注意', text:'大豆（ポン酢）含む。アボカドはラテックスアレルギーの方が反応する場合あり' }
+    ],
+    titles: [
+      '夏バテ回復 ジンジャーマリネのナスとアボカド できました',
+      'レンジ3分のナスで さっぱりしょうがマリネ できました',
+      'ポン酢×しょうがが最高 ナスとアボカドのマリネ できました',
+      '暑い日の副菜に 涼しいジンジャーマリネ できました',
+      'みらいのしょうがが仕事する ナスアボカドマリネ できました'
+    ],
+    refVideos: [{ url:'https://www.community.tamachanshop.jp/announcements/7cayeeurphymhizd', title:'参考レシピ（タマチャンコミュニティ）', sub:'community.tamachanshop.jp' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=ナス+アボカド+マリネ+ショート', title:'YouTube：ナス アボカド マリネ Shorts' },{ url:'https://www.youtube.com/results?search_query=しょうがポン酢+マリネ+夏+副菜', title:'YouTube：しょうが ポン酢 マリネ 夏' }]
+  },
+  {
+    id: 113,
+    name: '麻婆豆腐春雨',
+    sub: '麻辣×グリーンカレーの隠し味が旨みを重ねる絶品鍋',
+    by: 'Jaws',
+    emoji: '🫘',
+    bg: '#1A0C08',
+    tamachan: ['三十雑穀スープ 麻辣 適量','みらいのしょうが 適量'],
+    ingredients: ['豆腐 1丁','春雨 適量','白菜 適量','玉ねぎ 1個','ひき肉 適量','にんにく 適量','ごま油 大さじ1','三十雑穀スープ グリーンカレー 適量','水 適量'],
+    ingredientsAI: ['細ねぎ（緑の差し色・香り）','ごま（仕上げの映え）','ラー油（赤の色味・辛み追加）'],
+    steps: [
+      'ごま油を温めてにんにくとひき肉を炒め、少ししてみらいのしょうがを加える',
+      '豆腐と春雨を別で下茹でしておく',
+      'ひき肉に火が入ってきたら玉ねぎ・白菜の順に加えて炒める',
+      '全体的に火が通ったら三十雑穀スープ麻辣とグリーンカレーを投入し、水を少し加えてスープを伸ばす',
+      '豆腐と春雨を加えて煮詰めて完成'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese-fusion mapo tofu with harusame glass noodles: tender silken tofu cubes and translucent glass noodles swimming in a thick intensely red-orange spicy mala sauce with visible ground meat, cabbage strips, and onion pieces. The sauce has a glossy lacquered appearance from the sesame oil. Served in a deep matte dark charcoal ceramic pot with handles. Bamboo chopsticks and a deep ladle resting beside. Scattered thin green onion rings and toasted sesame seeds on top. A thin drizzle of chili oil. Faint steam rising. Camera at 45-degree overhead angle. Warm natural light from upper-left. Bokeh background. Deep red and black tones. No text. No watermark.',
+    proComments: [
+      '麻辣ソースの深紅×白い豆腐×緑のねぎが最高のコントラスト。45〜48度の斜め俯瞰でスープの深さと食材のレイヤーを表現する。ラー油をかけ回すと赤がさらに映え、湯気が立ち上っている間にシャッターを切ること。黒い土鍋かダークセラミックの深皿がベスト器。',
+      '春雨は下茹でが重要——そのまま加えると水分を吸いすぎてスープが薄まる。豆腐は崩れやすいので最後に加えて優しく混ぜる。麻辣スープに辛みと塩分があるので、水の量を見ながら加減する。グリーンカレーは少量加えるとスパイスの複雑みが増して深みが出る。',
+      '「麻婆豆腐×春雨」は中華系おかずShortsで高再生数のジャンル。「隠し味カレー」というサプライズフックが強力な差別化要因になる。「ご飯に合いすぎる」「旨辛」「止まらない」系コピーが刺さりやすい。',
+      '黒い土鍋かダークな深皿で麻辣ソースの赤を際立たせる。細ねぎとごまを天盛りにして色のバランスを整える。ラー油を一筋かけて赤いアクセントを追加。',
+      'にんにく×ひき肉を炒めるシーン・麻辣スープを投入する瞬間・豆腐を加えて煮込む工程・ラー油をかけ回すシーンの4点が必須。スープがぐつぐつ煮立つシーンは「旨辛感」を視覚と音の両方で伝えられる。'
+    ],
+    tips: [
+      { icon:'🎯', text:'麻辣の深紅×白い豆腐×緑のねぎが映える。黒い土鍋か深皿でコントラスト最大化' },
+      { icon:'📐', text:'45〜48度の斜め俯瞰でスープの深さと食材のレイヤーを表現' },
+      { icon:'💡', text:'暖かみのある左サイド光でスープの光沢を引き出す。湯気が出る10秒を狙って撮影' },
+      { icon:'✨', text:'ラー油をかけ回す瞬間・スープがぐつぐつ煮立つシーンは必ず動画で収録' },
+      { icon:'🍳', text:'細ねぎとごまを直前に散らして緑と白のコントラストを。ラー油の赤いアクセントで映え度UP' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'豆腐は高タンパク低カロリーで必須アミノ酸を含む。春雨はもち麦デンプン由来で低GI。みらいのしょうがで体を温めながらスパイシーな風味を加える' },
+      { title:'美味しさのコツ', text:'麻辣スープとグリーンカレーの組み合わせが旨みと複雑なスパイス感を生む決め手。ごま油の香りがベースになり、にんにくとしょうがの上に乗る' },
+      { title:'ひと足しポイント', text:'三十雑穀スープ麻辣とグリーンカレーのダブル使いが市販の麻婆豆腐の素では出せない深みを作る。みらいのしょうがで生姜の辛みをさらにプラス' },
+      { title:'アレルギー注意', text:'大豆（豆腐）・小麦（スープによる）含む場合あり。各スープ商品のアレルゲン表示を確認すること' }
+    ],
+    titles: [
+      '隠し味はカレー？ 絶品麻婆豆腐春雨 できました',
+      '旨辛が止まらない 麻辣×カレーの麻婆春雨 できました',
+      'ご飯が止まらない 豆腐と春雨の旨辛鍋 できました',
+      'スパイスの重ね技 麻婆豆腐春雨 できました',
+      'しょうが効かせた 深みのある麻婆春雨 できました'
+    ],
+    refVideos: [{ url:'https://www.community.tamachanshop.jp/announcements/fqstm701nehwjjx6', title:'参考レシピ（タマチャンコミュニティ）', sub:'community.tamachanshop.jp' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=麻婆豆腐+春雨+簡単+ショート', title:'YouTube：麻婆豆腐春雨 Shorts' },{ url:'https://www.youtube.com/results?search_query=旨辛+中華+豆腐+ひき肉+レシピ', title:'YouTube：旨辛中華豆腐 レシピ' }]
+  },
+  {
+    id: 114,
+    name: '肉とキャベツの辛味噌炒め',
+    sub: '福岡の味をタマちゃんアレンジ！チゲスープ仕立ての辛味噌で',
+    by: 'Jaws',
+    emoji: '🥩',
+    bg: '#160C08',
+    tamachan: ['三十雑穀チゲスープ 大さじ2'],
+    ingredients: ['豚肩ロース 100g','キャベツ 100g','おろしにんにく 大さじ1/2','ラード 大さじ1/2','塩こしょう 少々','醤油 小さじ1','酒 大さじ1'],
+    ingredientsAI: ['万能ねぎ（緑の差し色・香り）','ごま（仕上げの映え）','糸唐辛子（赤の引き締め）'],
+    steps: [
+      'フライパンにラードを弱中火で熱し、三十雑穀チゲスープ・醤油・酒を加えて練るように混ぜ辛味噌を作る',
+      '豚肩ロースは1cm幅、キャベツは約3cm角のざく切りにする',
+      'スキレットかフライパンにラードをひき中火に、豚肉を広げて塩こしょうし、焼き色がつくまで焼いたら取り出しおろしにんにくで和える',
+      '同じフライパンにキャベツを入れて軽く押さえ、焼き色がついたら豚肉を戻して全体を返すように炒める',
+      'フライパンのまま食卓に出し、辛味噌をお好みの量のせて完成。辛味噌を溶かしながらいただく'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Fukuoka-style spicy miso stir-fry: golden-seared pork shoulder slices with beautiful char marks alongside charred cabbage wedges with slightly caramelized edges, served directly in a black cast iron skillet on a wooden trivet. A generous dollop of glossy deep reddish-brown spicy miso sauce placed on top of the meat, ready to be mixed in. Thin green onion strips and toasted sesame seeds scattered on top. Red chili threads draped across. Steam rising from the hot skillet. Camera at 40-degree angle. Warm dramatic light from upper-left. Shallow depth of field with dark background. Japanese izakaya food aesthetic. Dark warm tones with amber highlights. No text. No watermark.',
+    proComments: [
+      '黒い鉄スキレットで直接提供するのが最高の演出。40〜42度の斜め俯瞰で辛味噌の艶と豚肉の焼き目が一枚に収まる。スキレットから立ち上る湯気×赤い辛味噌の組み合わせは食欲直撃の絵になる。木製のトリベットにのせて提供すると「居酒屋感」が出て映え度UP。',
+      '辛味噌を先に作り置きしておくのがポイント——フライパンで乳化させるタイミングを焦らない。豚肉はしっかり焼き色をつけてから一度取り出すことでジューシーさを保つ。キャベツは焦がさず「少し焼き目が入る程度」に留める。チゲスープの辛みは強いので量を見ながら調整する。',
+      '「スキレット料理」「福岡の味」は居酒屋・外食系Shortsで安定した人気カテゴリ。タマちゃんスープでアレンジというフックが明確な差別化になる。「スキレットそのまま食卓へ」「辛味噌を溶かしながら食べる」というダイナミックな演出が動画映えする。',
+      '黒い鋳鉄スキレットでそのままサーブ。辛味噌をのせる直前に撮影し、食べながら混ぜる工程も動画に含める。木製トリベットを敷くと臨場感UP。テーブルはブラックアイアン風かダークウォールナットが◎。',
+      '「辛味噌を作るシーン」→「豚肉を焼き色つけるシーン」→「スキレットでキャベツを焼くシーン」→「辛味噌をのせるシーン」→「辛味噌を溶かしながら食べるシーン」の5シーンが必須。辛味噌を溶かしながら食べるシーンは長めに収録すること。'
+    ],
+    tips: [
+      { icon:'🎯', text:'黒鉄スキレット×辛味噌の深紅が最強コンビ。スキレットそのままテーブルへ' },
+      { icon:'📐', text:'40〜42度の斜め俯瞰でスキレット表面と辛味噌の艶を一枚に収める' },
+      { icon:'💡', text:'ドラマチックなサイド光でスキレットの鉄感と肉の焼き目を際立たせる' },
+      { icon:'✨', text:'辛味噌をのせる瞬間・溶かしながら食べるシーンは必ず長めに収録' },
+      { icon:'🍳', text:'万能ねぎと糸唐辛子を天盛りにして彩りUP。ごまを散らすと完成感が増す' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'キャベツはビタミンCとキャベジン（ビタミンU）が豊富で胃腸に優しい。豚肩ロースにはビタミンB1が多く疲労回復に効果的。ラードの代わりにオリーブオイルでヘルシーアレンジも可' },
+      { title:'美味しさのコツ', text:'辛味噌をあらかじめ作り置きしておくと味が均一になる。豚肉をしっかり焼き色つけてから取り出す「一度退場」が肉のジューシーさを保つ鍵' },
+      { title:'ひと足しポイント', text:'三十雑穀チゲスープが辛味噌のベースになることで市販の味噌より旨みと複雑みが増す。食べながら辛味噌を好みの量で溶かせるのでお子様から辛党まで対応できる' },
+      { title:'アレルギー注意', text:'小麦（醤油・チゲスープによる）・大豆（醤油）含む。ラードは豚由来のため宗教的な食事制限にも要注意' }
+    ],
+    titles: [
+      '福岡の味をおうちで 肉とキャベツの辛味噌炒め できました',
+      'スキレットごと食卓へ 旨辛チゲ味噌炒め できました',
+      '辛味噌を溶かしながら 豚とキャベツの悪魔炒め できました',
+      'タマチャンアレンジで 福岡ご当地肉味噌炒め できました',
+      'ご飯もお酒も止まらない 辛味噌豚キャベツ できました'
+    ],
+    refVideos: [{ url:'https://www.instagram.com/reels/DXN_aCNiHxb/', title:'参考リール（Instagram）', sub:'instagram.com' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=豚キャベツ+辛味噌+スキレット+ショート', title:'YouTube：豚キャベツ 辛味噌 Shorts' },{ url:'https://www.youtube.com/results?search_query=肉味噌炒め+福岡+ご当地+レシピ', title:'YouTube：肉味噌炒め 福岡 レシピ' }]
+  },
+  {
+    id: 115,
+    name: '簡単リエット',
+    sub: 'コーンビーフ×クリームチーズで作る爆速おつまみ',
+    by: 'Jaws',
+    emoji: '🧀',
+    bg: '#141008',
+    tamachan: ['特製たまねぎスープ 小さじ2'],
+    ingredients: ['コーンビーフ 1缶（80〜100g）','クリームチーズ 40g','無塩バター 小さじ1','黒胡椒 適量','イタリアンパセリ 少々'],
+    ingredientsAI: ['ケイパー（塩味と映えのアクセント）','クラッカー（盛り付け映え）','レモン皮ゼスト（香りと黄色の差し色）'],
+    steps: [
+      'クリームチーズとバターを常温に戻す（またはレンジで10秒加熱）',
+      'ボウルにコーンビーフ・クリームチーズ・バター・特製たまねぎスープ・黒胡椒を加えてよく混ぜる',
+      '器に盛りつけてイタリアンパセリを散らす',
+      '食べる直前に黒胡椒を追加するとワインに合う香りが立つ'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. French-style rillette made with corned beef: a rustic textured spread with visible shredded meat fibers and creamy white cream cheese marbled throughout, seasoned generously with cracked black pepper. Served in a small white ceramic ramekin with a generous butter knife embedded in the spread. Crispy golden crackers and a fresh baguette slice arranged beside. A few small capers and lemon zest strips scattered on top. Fresh flat-leaf parsley sprigs as garnish. Camera at 45-degree angle. Warm moody restaurant-quality light from upper-left. Shallow depth of field with soft dark background. European bistro food aesthetic. Warm cream and brown tones. No text. No watermark.',
+    proComments: [
+      'ラスティックなテクスチャが主役。45度の斜め俯瞰でスプレッドの凸凹した質感とクラッカーの並びを同時に見せる。バターナイフをスプレッドに刺した状態で撮影すると「すくいたい感」が伝わる。白いラメキンか木製のスレートボードがビストロ感を演出する器の候補。',
+      'コーンビーフは缶から出した状態のバラバラな繊維感を完全につぶさず、粗めに残すのがリエットらしいテクスチャのポイント。クリームチーズとバターは必ず常温に戻してから混ぜること——冷たいと均一に混ざらない。たまねぎスープに塩分があるので追い塩は慎重に。',
+      '「コーンビーフ活用レシピ」「混ぜるだけおつまみ」は時短系Shortsで安定したニーズがある。「ワインに合う」「5分でできる」というターゲットが明確な訴求がバズりやすい。クラッカーに乗せる「ぬりぬり」シーンは視聴者がすぐ真似したくなる映えシーンとして有効。',
+      '白いラメキンか木製スレートボードに盛り付け。クラッカーやバゲットを並べてヨーロピアンボード風に仕上げる。ケイパーとパセリを天盛りにして高級感を演出。ワイングラスを背景に入れると「おつまみ感」が増す。',
+      '「コーンビーフを缶から出す」→「クリームチーズと混ぜる」→「器に盛りつける」→「クラッカーに塗る瞬間」の4シーンが必須。クラッカーにたっぷり塗る「ぬりぬりシーン」は再生数が伸びやすいので長めに収録。'
+    ],
+    tips: [
+      { icon:'🎯', text:'ラスティックな質感が主役。白ラメキンか木製スレートボードでビストロ感を演出' },
+      { icon:'📐', text:'45度の斜め俯瞰でスプレッドのテクスチャとクラッカーの並びを同時に表現' },
+      { icon:'💡', text:'モーディな暖かい光でビストロ感を演出。背景を暗くして料理を際立たせる' },
+      { icon:'✨', text:'クラッカーにたっぷり塗る「ぬりぬりシーン」は必ず長めに収録' },
+      { icon:'🍳', text:'ケイパーとパセリで映え感UP。ワイングラスを背景に入れるとおつまみ感が増す' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'コーンビーフは高タンパク・鉄分豊富。クリームチーズはカルシウム含む。特製たまねぎスープで添加物を抑えながら旨みをプラス' },
+      { title:'美味しさのコツ', text:'たまねぎスープが肉とクリームチーズの旨みを一体化させる決め手。粗めにほぐしたコーンビーフの繊維感がリエットらしい食感を生む' },
+      { title:'ひと足しポイント', text:'特製たまねぎスープが市販コンソメより自然な甘みと旨みをプラス。食べる直前の追い黒胡椒でワインに合う香りが際立つ' },
+      { title:'アレルギー注意', text:'乳製品（クリームチーズ・バター）含む。コーンビーフ缶のアレルゲン表示も要確認' }
+    ],
+    titles: [
+      '一瞬で作れる 缶詰コーンビーフのリエット できました',
+      '混ぜるだけのワインおつまみ 簡単リエット できました',
+      'クリームチーズと混ぜるだけ コーンビーフリエット できました',
+      'たまねぎスープが隠し味 爆速おつまみリエット できました',
+      'クラッカーに塗りたくる 5分リエット できました'
+    ],
+    refVideos: [{ url:'https://www.instagram.com/reels/DSCmjEWAWvE/', title:'参考リール（Instagram）', sub:'instagram.com' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=コーンビーフ+リエット+おつまみ+ショート', title:'YouTube：コーンビーフリエット Shorts' },{ url:'https://www.youtube.com/results?search_query=コーンビーフ+アレンジ+クリームチーズ+簡単', title:'YouTube：コーンビーフ アレンジ 簡単' }]
+  },
+  {
+    id: 116,
+    name: 'かぼちゃのサラダ',
+    sub: 'クリームチーズ×たまねぎスープで作る贅沢かぼちゃサラダ',
+    by: 'Jaws',
+    emoji: '🎃',
+    bg: '#1A1006',
+    tamachan: ['特製たまねぎスープ 小さじ1','ななつのしあわせミックスナッツ 適量'],
+    ingredients: ['かぼちゃ 1/4カット（約500g）','クリームチーズ 50g','マヨネーズ 小さじ1'],
+    ingredientsAI: ['シナモン（秋の香りと映え）','かぼちゃの種（食感と映えのアクセント）','パセリ（緑の差し色）'],
+    steps: [
+      'かぼちゃの種をくり抜き、ラップで密着させてボウルに置き、600W×6分レンチン（500gより小さい場合は様子を見ながら調整）',
+      'キッチンペーパーでボウルの底面やかぼちゃの水分を拭き取る',
+      'クリームチーズ・特製たまねぎスープ・マヨネーズを加え、しゃもじでかぼちゃを潰しながら混ぜる',
+      '器に盛りつけ、ミックスナッツを飾って完成'
+    ],
+    imgPrompt: 'Hyperrealistic professional food photography. Japanese kabocha pumpkin salad: creamy smashed kabocha squash with a warm deep orange-yellow color, dotted with chunks of cream cheese marbled throughout, natural rustic chunky texture (not fully mashed). Topped generously with coarsely chopped mixed nuts (walnuts, cashews, almonds) arranged artfully. Dusted with a hint of cinnamon for warm color. Served in a wide shallow matte warm-white ceramic bowl. Bowl placed on a natural pale wood board. A wooden spoon resting beside. Fresh parsley sprig and a few pumpkin seeds as garnish. Camera at 45-degree overhead angle. Warm natural window light from upper-left. Shallow depth of field. Japanese seasonal food aesthetic. Warm orange and cream tones. No text. No watermark.',
+    proComments: [
+      'かぼちゃのオレンジ×クリームチーズの白×ナッツの茶色が秋冬の映えトリオ。45度の斜め俯瞰でサラダの粗めのテクスチャとナッツのボリュームを同時に見せる。スプーンを添えることで「すくいたい感」が伝わる。白系の浅い小鉢がかぼちゃの色を最大限引き立てる器選択。',
+      'かぼちゃは600Wで6分が目安——竹串がすっと通れば加熱完了。水分をしっかり拭き取らないとクリームチーズと分離しやすい。潰しすぎるとペースト状になるので「粗めに潰す」が食感のポイント。クリームチーズは常温に戻してから混ぜると均一に混ざる。',
+      '「かぼちゃサラダ」は秋冬に検索数が急上昇するが、Shortsでは通年安定しているジャンル。「クリームチーズ入り」という差別化ポイントが明確。「レンジ6分」「混ぜるだけ」の時短アピールが刺さりやすい。サムネはオレンジ色のサラダにナッツを豪快にのせた俯瞰構図が最強。',
+      '白か薄いベージュの浅い小鉢を選択。ナッツを天盛りにして高さと立体感を出す。テーブルは木目かリネン生成りが◎。仕上げにパセリをひとつまみ添えると彩りが整う。シナモンを少量ふると秋らしい深みのある色合いが加わる。',
+      'かぼちゃをレンジから出す「ほかほか演出」→「しゃもじで潰すシーン」→「クリームチーズを加えて混ぜる工程」→「ナッツを豪快にのせるシーン」の4点が必須。スプーンですくって食べる最初の一口シーンも「とろとろ感」を伝えるのに効果的。'
+    ],
+    tips: [
+      { icon:'🎯', text:'かぼちゃのオレンジ×ナッツの茶色が映える。白系の浅い小鉢で色を際立たせる' },
+      { icon:'📐', text:'45度の斜め俯瞰でサラダの粗めテクスチャとナッツのボリュームを表現' },
+      { icon:'💡', text:'暖かみのある自然光でかぼちゃの鮮やかなオレンジを引き出す' },
+      { icon:'✨', text:'しゃもじで潰すシーン・ナッツを豪快にのせる瞬間は必ず動画で収録' },
+      { icon:'🥄', text:'スプーンを添えて「すくいたい感」を演出。シナモンをふると秋の映えが増す' }
+    ],
+    notes: [
+      { title:'ヘルシーポイント', text:'かぼちゃはβカロテン・ビタミンC・Eが豊富な緑黄色野菜。ミックスナッツで良質な脂質・ビタミンEをプラス。電子レンジ調理で油を使わずヘルシーに仕上がる' },
+      { title:'美味しさのコツ', text:'たまねぎスープとクリームチーズの組み合わせがかぼちゃの甘みをコクのある深い旨みに変える。粗めに潰すことで食感のコントラストが生まれる' },
+      { title:'ひと足しポイント', text:'特製たまねぎスープが塩分とコクをひと足しする決め手。ミックスナッツをたっぷりのせることでタマチャン流の栄養価の高い仕上がりになる' },
+      { title:'アレルギー注意', text:'ナッツ（木の実類）・卵（マヨネーズ）・乳製品（クリームチーズ）含む。各アレルゲンに注意が必要' }
+    ],
+    titles: [
+      '旬のかぼちゃをまるごと かぼちゃサラダ できました',
+      'クリームチーズと混ぜるだけ 贅沢かぼちゃサラダ できました',
+      'レンジ6分で完成 ほくほくかぼちゃのサラダ できました',
+      'たまねぎスープひと足しで 深みのあるかぼちゃサラダ できました',
+      'ナッツがごろごろ 満足かぼちゃのクリームサラダ できました'
+    ],
+    refVideos: [{ url:'https://www.instagram.com/reels/DOdNoBPj-A9/', title:'参考リール（Instagram）', sub:'instagram.com' }],
+    autoVideos: [{ url:'https://www.youtube.com/results?search_query=かぼちゃサラダ+クリームチーズ+ショート', title:'YouTube：かぼちゃサラダ クリームチーズ Shorts' },{ url:'https://www.youtube.com/results?search_query=かぼちゃ+レンジ+簡単+サラダ+レシピ', title:'YouTube：かぼちゃ レンジ 簡単 サラダ' }]
   }
 ];
 
