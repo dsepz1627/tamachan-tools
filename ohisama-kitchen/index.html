@@ -410,9 +410,7 @@ function getStoredImage(id) {
 function applyImage(id, src) {
   const area = document.getElementById(`ia-${id}`);
   if (area) {
-    const numEl = area.querySelector('.detail-hero-num');
     area.innerHTML = `<img src="${src}" alt="盛り付けイメージ">`;
-    if (numEl) area.appendChild(numEl);
     /* 削除ボタンを action bar に追加 */
     const bar = document.querySelector('.img-action-bar');
     if (bar && !bar.querySelector('.btn-upload')) {
@@ -426,12 +424,10 @@ function applyImage(id, src) {
   saveImage(id, src);
   const listCard = document.querySelector(`.recipe-card[data-id="${id}"] .card-img-area`);
   if (listCard) {
-    const numEl = listCard.querySelector('.card-num');
     const existing = listCard.querySelector('img, .card-img-emoji');
     const img = document.createElement('img');
     img.src = src; img.alt = '';
     if (existing) existing.replaceWith(img);
-    else if (numEl) listCard.insertBefore(img, numEl);
     else listCard.appendChild(img);
   }
 }
@@ -1306,10 +1302,8 @@ function generateImage(id) {
   const area = document.getElementById(`ia-${id}`);
   const btn  = document.getElementById(`bg-${id}`);
 
-  const num = RECIPES.findIndex(x => x.id === id) + 1;
   area.innerHTML = `
     <span class="detail-hero-emoji">${r.emoji}</span>
-    <div class="detail-hero-num">${num}</div>
     <div class="img-loading">
       <div class="spinner"></div>
       <div class="img-loading-roles">
@@ -1336,7 +1330,6 @@ function generateImage(id) {
   img.onerror = () => {
     area.innerHTML = `
       <span class="detail-hero-emoji">${r.emoji}</span>
-      <div class="detail-hero-num">${num}</div>
       <div class="img-error">
         <div class="img-error-text">⚠️ 生成に失敗しました<br>ネットワーク接続を確認してください</div>
       </div>`;
@@ -1397,7 +1390,6 @@ function listHTML(tab) {
     <div class="recipe-card" data-id="${r.id}">
       <div class="card-img-area">
         ${stored ? `<img src="${stored}" alt="${r.name}">` : `<span class="card-img-emoji">${r.emoji}</span>`}
-        <div class="card-num">${idx + 1}</div>
       </div>
       <div class="card-info">
         <div class="card-recipe-name">${r.name}</div>
@@ -1474,10 +1466,9 @@ function detailHTML(r) {
 
     <div class="detail-hero-img" id="ia-${r.id}">
       ${stored
-        ? `<img src="${stored}" alt="${r.name}"><div class="detail-hero-num">${recipeNum}</div>`
+        ? `<img src="${stored}" alt="${r.name}">`
         : `<span class="detail-hero-emoji">${r.emoji}</span>
-           <div class="detail-hero-placeholder"><div class="detail-hero-placeholder-label">生成中…</div></div>
-           <div class="detail-hero-num">${recipeNum}</div>`}
+           <div class="detail-hero-placeholder"><div class="detail-hero-placeholder-label">生成中…</div></div>`}
     </div>
 
     <div class="img-action-bar">
